@@ -1,0 +1,13 @@
+use_case,split,model_variant,score_mean,f1_mean,ece_mean,run_count,baseline_score,score_gain_vs_baseline
+Monitoring crops and water from space,Region transfer,physics_aware_fm,71.1,0.69,0.1,1,61.2,9.899999999999991
+Monitoring crops and water from space,Region transfer,multimodal_ssl,67.8,0.65,0.14,1,61.2,6.599999999999994
+Monitoring crops and water from space,Region transfer,baseline,61.2,0.59,0.18,1,61.2,0.0
+Monitoring crops and water from space,Year transfer,physics_aware_fm,68.3,0.66,0.11,1,58.4,9.899999999999999
+Monitoring crops and water from space,Year transfer,multimodal_ssl,64.2,0.62,0.15,1,58.4,5.800000000000004
+Monitoring crops and water from space,Year transfer,baseline,58.4,0.56,0.2,1,58.4,0.0
+Phenotyping and breeding resilient crops,Missing modality,physics_aware_fm,60.4,0.58,0.13,1,49.5,10.899999999999999
+Phenotyping and breeding resilient crops,Missing modality,multimodal_ssl,56.1,0.54,0.17,1,49.5,6.600000000000001
+Phenotyping and breeding resilient crops,Missing modality,baseline,49.5,0.47,0.22,1,49.5,0.0
+Precision farming for pest and disease,Sensor transfer,physics_aware_fm,64.7,0.62,0.12,1,54.6,10.100000000000001
+Precision farming for pest and disease,Sensor transfer,multimodal_ssl,60.5,0.58,0.16,1,54.6,5.899999999999999
+Precision farming for pest and disease,Sensor transfer,baseline,54.6,0.52,0.21,1,54.6,0.0

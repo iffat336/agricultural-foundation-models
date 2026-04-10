@@ -1,0 +1,13 @@
+run_name,use_case,split,model_variant,score,f1,ece,notes
+baseline_region_1,Monitoring crops and water from space,Region transfer,baseline,61.2,0.59,0.18,image-only baseline
+ssl_region_1,Monitoring crops and water from space,Region transfer,multimodal_ssl,67.8,0.65,0.14,multimodal pretraining
+physics_region_1,Monitoring crops and water from space,Region transfer,physics_aware_fm,71.1,0.69,0.10,physics-aware adaptation
+baseline_year_1,Monitoring crops and water from space,Year transfer,baseline,58.4,0.56,0.20,year-shift baseline
+ssl_year_1,Monitoring crops and water from space,Year transfer,multimodal_ssl,64.2,0.62,0.15,multimodal pretraining
+physics_year_1,Monitoring crops and water from space,Year transfer,physics_aware_fm,68.3,0.66,0.11,physics-aware adaptation
+baseline_sensor_1,Precision farming for pest and disease,Sensor transfer,baseline,54.6,0.52,0.21,sensor-shift baseline
+ssl_sensor_1,Precision farming for pest and disease,Sensor transfer,multimodal_ssl,60.5,0.58,0.16,multimodal pretraining
+physics_sensor_1,Precision farming for pest and disease,Sensor transfer,physics_aware_fm,64.7,0.62,0.12,physics-aware adaptation
+baseline_missing_1,Phenotyping and breeding resilient crops,Missing modality,baseline,49.5,0.47,0.22,missing weather at test time
+ssl_missing_1,Phenotyping and breeding resilient crops,Missing modality,multimodal_ssl,56.1,0.54,0.17,missing weather at test time
+physics_missing_1,Phenotyping and breeding resilient crops,Missing modality,physics_aware_fm,60.4,0.58,0.13,missing weather at test time
