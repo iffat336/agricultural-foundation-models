@@ -7,7 +7,6 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Agricultural Foundation Models",
-    page_icon="AI",
     layout="wide",
     initial_sidebar_state="expanded",
 )
