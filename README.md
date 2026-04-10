@@ -64,6 +64,12 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+For the full local ML prototype stack, use:
+
+```bash
+pip install -r requirements-ml.txt
+```
+
 ## Why The New Version Is Stronger
 
 - it now reflects the supervisors' current research directions more explicitly
@@ -121,6 +127,12 @@ This creates:
 - `outputs/dummy_training/dummy_training_summary.md`
 
 The generated `dummy_training_runs.csv` follows the same schema as the app and benchmark pipeline, so you can upload it directly in the sidebar.
+
+## Streamlit Cloud Note
+
+- `requirements.txt` is intentionally minimal for app deployment
+- `requirements-ml.txt` contains the heavier local ML stack used for synthetic training and benchmark prototyping
+- if you deploy on Streamlit Cloud, it should install only `requirements.txt`
 
 ### Experiment Log Schema
 
