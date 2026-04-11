@@ -35,6 +35,7 @@ This app turns those ideas into one coherent project narrative:
 - `Experimental Plan`: OOD splits, ablations, and the technical stack
 - `Dataset Strategy`: data sources, G-E-M signal mapping, and supervisor-linked rationale
 - `Candidate Fit`: how the project demonstrates motivation, collaboration, writing, Python, PyTorch, and scikit-learn readiness
+- `CV Value Pack`: copy-ready CV bullets, recruiter summary, repo-proof mapping, and interview talking points
 - `Supervisor Alignment`: how the project combines all three supervision profiles
 - `Proposal Builder`: a configurable mini abstract generator for your application pitch
 - `One-Page Proposal`: a downloadable research proposal draft tailored to the selected use case and emphasis
@@ -77,9 +78,17 @@ pip install -r requirements-ml.txt
 - it presents publishable research questions, OOD evaluation logic, and ablation design
 - it now includes dataset planning, hypotheses, risks, and a reusable proposal builder
 - it now shows how the project reflects the vacancy's required qualities, duties, and ML capabilities
+- it now includes a CV-focused value pack so the repo can be presented as evidence of research readiness
 - it now generates a one-page proposal and a WUR-specific motivation letter draft
 - it now supports editable applicant profile fields and local or uploaded experiment logs
 - it reads like a serious PhD pitch rather than a startup-style dashboard
+
+## Why This Adds Value To A CV
+
+- it shows research ownership: problem framing, hypotheses, risks, and evaluation design
+- it shows technical execution: benchmark utilities, prototype training flow, and experiment schema
+- it shows scientific communication: proposal, motivation-letter, CV, and interview-ready exports
+- it shows honest judgment: sample evidence is labeled as scaffolded workflow, not inflated as finished results
 
 ## Personalization And Evidence
 
@@ -95,6 +104,7 @@ pip install -r requirements-ml.txt
 - Dummy multimodal training script: `experiments/train_dummy_multimodal.py`
 - Minimal PyTorch models: `models/multimodal_baseline.py`
 - Technical report: `docs/technical_report.md`
+- CV value note: `docs/cv_value_pack.md`
 - Generated sample outputs:
   - `outputs/ood_summary.csv`
   - `outputs/ood_best_variants.csv`

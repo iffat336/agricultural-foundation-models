@@ -195,6 +195,16 @@ RISKS = pd.DataFrame(
     columns=["Research risk", "Mitigation"],
 )
 
+CV_SIGNAL_MAP = pd.DataFrame(
+    [
+        ["Research framing", "Professor-aware project arc, hypotheses, risks, and one-page proposal export", "Shows you can define a coherent PhD agenda instead of only building a demo"],
+        ["Technical execution", "OOD benchmark utility, dummy multimodal training script, and experiment-log schema", "Signals hands-on Python, PyTorch, evaluation, and workflow design"],
+        ["Scientific communication", "Motivation letter, interview pitch, and CV-oriented exports inside the app", "Shows writing clarity and the ability to translate research into application materials"],
+        ["Portfolio maturity", "README, technical report, repo artifacts, and downloadable summaries", "Makes the repository easier for supervisors and recruiters to scan quickly"],
+    ],
+    columns=["CV value area", "Project evidence", "Why it matters"],
+)
+
 
 def style() -> None:
     st.markdown(
@@ -410,6 +420,141 @@ def evidence_fig(df: pd.DataFrame) -> go.Figure:
     return fig
 
 
+def summarize_experiment_evidence(df: pd.DataFrame) -> dict:
+    observed = df.dropna(subset=["score"]).copy()
+    summary = {
+        "runs": 0,
+        "use_cases": 0,
+        "splits": 0,
+        "variants": 0,
+        "best_variant": "planned",
+        "best_score": None,
+        "avg_gain": None,
+    }
+    if observed.empty:
+        return summary
+
+    summary["runs"] = int(len(observed))
+    summary["use_cases"] = int(observed["use_case"].nunique())
+    summary["splits"] = int(observed["split"].nunique())
+    summary["variants"] = int(observed["model_variant"].nunique())
+
+    best_row = observed.sort_values("score", ascending=False).iloc[0]
+    summary["best_variant"] = str(best_row["model_variant"])
+    summary["best_score"] = float(best_row["score"])
+
+    baseline = (
+        observed[observed["model_variant"] == "baseline"]
+        .groupby("split")["score"]
+        .mean()
+        .rename("baseline")
+    )
+    physics = (
+        observed[observed["model_variant"] == "physics_aware_fm"]
+        .groupby("split")["score"]
+        .mean()
+        .rename("physics_aware_fm")
+    )
+    aligned = pd.concat([baseline, physics], axis=1).dropna()
+    if not aligned.empty:
+        summary["avg_gain"] = float((aligned["physics_aware_fm"] - aligned["baseline"]).mean())
+
+    return summary
+
+
+def build_repo_assets() -> pd.DataFrame:
+    return pd.DataFrame(
+        [
+            ["Interactive portfolio app", "app.py", "Shows project framing, benchmark logic, export tooling, and application-ready storytelling."],
+            ["Benchmark utility", "eval/ood_benchmark.py", "Demonstrates that the repo includes reusable evaluation code rather than slides only."],
+            ["CLI experiment runner", "experiments/run_ood_benchmark.py", "Signals reproducibility and command-line workflow readiness."],
+            ["Dummy multimodal prototype", "experiments/train_dummy_multimodal.py", "Shows modeling structure and a path from concept toward implementation."],
+            ["Baseline models", "models/multimodal_baseline.py", "Adds evidence of PyTorch-oriented architectural thinking."],
+            ["Technical report", "docs/technical_report.md", "Provides a supervisor-friendly written explanation of the repo's evidence and limits."],
+        ],
+        columns=["Asset", "Path", "CV proof"],
+    )
+
+
+def build_recruiter_summary(case_name: str, novelty: str, summary: dict) -> str:
+    evidence_line = (
+        f"The current repo includes {summary['runs']} structured experiment rows across {summary['splits']} OOD settings "
+        f"and {summary['variants']} model variants to demonstrate the evaluation workflow."
+        if summary["runs"]
+        else "The repo currently focuses on research framing, benchmark design, and implementation scaffolding rather than final real-data results."
+    )
+    return (
+        "This project adds CV value because it looks like a research portfolio, not only a coursework app. "
+        f"It frames {case_name.lower()} through multimodal agricultural foundation models with a {novelty} emphasis, "
+        "connects the idea to named WUR supervisors, and backs the narrative with benchmark scaffolding, prototype code, and reusable application materials. "
+        f"{evidence_line}"
+    )
+
+
+def build_cv_bullets(case_name: str, novelty: str, summary: dict) -> list[str]:
+    evidence_clause = (
+        f"Created a reusable OOD evaluation scaffold covering {summary['splits']} shift settings, {summary['variants']} model variants, and exportable benchmark reports for future real-data runs."
+        if summary["runs"]
+        else "Created a reusable OOD evaluation scaffold for region, year, sensor, and missing-modality robustness studies in agricultural ML."
+    )
+    return [
+        (
+            f"Designed a research-oriented portfolio project on agriculture-specific foundation models for {case_name.lower()}, "
+            f"combining G-E-M multimodal alignment, {novelty}-driven modeling, and WUR-targeted PhD positioning."
+        ),
+        (
+            "Built a Streamlit-based research interface that generates CV-ready abstracts, a one-page proposal, a motivation letter, "
+            "and interview wording from the same technical project narrative."
+        ),
+        evidence_clause,
+        (
+            "Structured the repository with benchmark utilities, prototype training scripts, technical documentation, and evidence artifacts "
+            "to present Python, PyTorch, scikit-learn, and scientific communication readiness in one place."
+        ),
+    ]
+
+
+def build_interview_points(case_name: str, summary: dict) -> list[str]:
+    points = [
+        "I built this project to show that I can define a research question, not just implement isolated models.",
+        f"The flagship use case is {case_name.lower()}, but the pipeline is intentionally designed so the evaluation logic can transfer across agricultural tasks.",
+        "The repo is honest about current limitations: it distinguishes proposal framing, scaffolded evidence, and not-yet-real experimental claims.",
+        "What makes the project strong is the combination of multimodal SSL, physics-aware reasoning, and OOD robustness rather than any single component in isolation.",
+    ]
+    if summary["avg_gain"] is not None:
+        points.append(
+            f"In the current sample evidence workflow, the physics-aware variant is about {summary['avg_gain']:.1f} points better than the baseline on average across shared OOD splits."
+        )
+    return points
+
+
+def build_cv_value_pack(case_name: str, priority: str, novelty: str, profile: dict, summary: dict) -> str:
+    bullets = build_cv_bullets(case_name, novelty, summary)
+    interview_points = build_interview_points(case_name, summary)
+    assets = build_repo_assets()
+    assets_text = "\n".join(
+        f"- {row.Asset}: {row.Path} - {row['CV proof']}"
+        for _, row in assets.iterrows()
+    )
+    bullet_text = "\n".join(f"- {bullet}" for bullet in bullets)
+    interview_text = "\n".join(f"- {point}" for point in interview_points)
+    return (
+        "CV Value Pack\n"
+        f"Applicant: {profile['name']}\n"
+        f"Target emphasis: {priority}\n"
+        f"Flagship use case: {case_name}\n"
+        f"Main novelty: {novelty}\n\n"
+        "Recruiter Summary\n"
+        f"{build_recruiter_summary(case_name, novelty, summary)}\n\n"
+        "CV Bullets\n"
+        f"{bullet_text}\n\n"
+        "Interview Proof Points\n"
+        f"{interview_text}\n\n"
+        "Repo Assets To Mention\n"
+        f"{assets_text}\n"
+    )
+
+
 def render_poster(case_name: str) -> None:
     case = USE_CASES[case_name]
     st.markdown(
@@ -597,6 +742,7 @@ with st.sidebar:
             "Experimental Plan",
             "Dataset Strategy",
             "Candidate Fit",
+            "CV Value Pack",
             "Supervisor Alignment",
             "Proposal Builder",
             "One-Page Proposal",
@@ -842,6 +988,87 @@ elif page == "Candidate Fit":
             """
         )
 
+elif page == "CV Value Pack":
+    st.header("CV Value Pack")
+    experiment_logs, _ = load_experiment_logs(uploaded_log_file)
+    evidence_summary = summarize_experiment_evidence(experiment_logs)
+    cv_bullets = build_cv_bullets(selected_case, novelty_priority, evidence_summary)
+    interview_points = build_interview_points(selected_case, evidence_summary)
+    recruiter_summary = build_recruiter_summary(selected_case, novelty_priority, evidence_summary)
+    cv_value_pack = build_cv_value_pack(selected_case, supervisor_priority, novelty_priority, profile, evidence_summary)
+
+    st.markdown(
+        """
+        This page turns the project into application-ready evidence. It helps you describe the repo as
+        proof of research thinking, technical execution, and communication strength on your CV, LinkedIn,
+        portfolio, and in interviews.
+        """
+    )
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+        metric("Evidence rows", str(evidence_summary["runs"] or "Planned"), "Structured benchmark workflow")
+    with c2:
+        metric("OOD settings", str(evidence_summary["splits"] or len(OOD)), "Transfer-focused evaluation")
+    with c3:
+        metric("Repo assets", "6", "Code + docs + exports")
+    with c4:
+        best_score = f"{evidence_summary['best_score']:.1f}" if evidence_summary["best_score"] is not None else "Planned"
+        metric("Best score", best_score, "Sample evidence, not claimed publication result")
+
+    tab1, tab2, tab3, tab4 = st.tabs(["Recruiter Summary", "CV Bullets", "Repo Proof", "Interview Proof"])
+    with tab1:
+        st.info(recruiter_summary)
+        st.dataframe(CV_SIGNAL_MAP, use_container_width=True, hide_index=True)
+        st.markdown("### Suggested title variants")
+        st.code(
+            "\n".join(
+                [
+                    "Physics-Aware Agricultural Foundation Models for Robust Multimodal Learning",
+                    "Multimodal Agricultural Foundation Models with OOD Benchmarking",
+                    "Research Portfolio: G-E-M-Aligned Foundation Models for Agricultural AI",
+                ]
+            ),
+            language="text",
+        )
+    with tab2:
+        st.text_area(
+            "Copy-ready CV bullets",
+            value="\n".join(f"- {bullet}" for bullet in cv_bullets),
+            height=220,
+        )
+        st.text_area(
+            "One-line portfolio summary",
+            value="Built a research-oriented portfolio on agricultural foundation models that combines multimodal SSL, OOD benchmarking, and physics-aware adaptation for WUR-targeted PhD applications.",
+            height=90,
+        )
+        st.download_button(
+            "Download CV Value Pack",
+            data=cv_value_pack,
+            file_name="wur_cv_value_pack.txt",
+            mime="text/plain",
+        )
+    with tab3:
+        st.dataframe(build_repo_assets(), use_container_width=True, hide_index=True)
+        st.markdown(
+            """
+            Best framing:
+            this repository demonstrates how you think, document, structure experiments, and communicate research.
+            That combination is usually more valuable on a CV than a single flashy notebook.
+            """
+        )
+    with tab4:
+        st.markdown("### Talking points for supervisors or interviewers")
+        for point in interview_points:
+            st.markdown(f"- {point}")
+        st.markdown("### Honest framing to keep")
+        st.markdown(
+            """
+            - Treat current benchmark numbers as scaffolded workflow evidence unless replaced by your own real experiments.
+            - Emphasize the repo's strengths in problem framing, evaluation design, and implementation structure.
+            - Present the project as a serious research portfolio that is ready for deeper empirical work.
+            """
+        )
+
 elif page == "Supervisor Alignment":
     st.header("Supervisor Alignment")
     cols = st.columns(3)
@@ -936,13 +1163,8 @@ elif page == "Application Pitch":
         st.markdown("### Project title")
         st.markdown("**Physics-Aware Agricultural Foundation Models for Robust Multimodal Learning**")
         st.markdown("### CV bullet")
-        st.markdown(
-            """
-            Designed a proposal-driven research project on agriculture-specific foundation models,
-            combining multimodal self-supervised learning, G-E-M representation alignment, and
-            physics-aware adaptation for robust crop-focused remote sensing and time-series tasks.
-            """
-        )
+        cv_summary = summarize_experiment_evidence(load_experiment_logs(uploaded_log_file)[0])
+        st.markdown(build_cv_bullets(selected_case, novelty_priority, cv_summary)[0])
     with tabs[1]:
         st.markdown(
             """
