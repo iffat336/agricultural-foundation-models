@@ -34,6 +34,7 @@ This app turns those ideas into one coherent project narrative:
 - `Method Blueprint`: multimodal pipeline, SSL objectives, and physics-aware layer
 - `Poster Architecture`: a visual interview-ready summary of the full research pipeline
 - `Experimental Plan`: OOD splits, ablations, and the technical stack
+- `Vacancy Match`: direct mapping to the actual WUR position duties, requirements, application pack, and dates
 - `Dataset Strategy`: data sources, G-E-M signal mapping, and supervisor-linked rationale
 - `Candidate Fit`: how the project demonstrates motivation, collaboration, writing, Python, PyTorch, and scikit-learn readiness
 - `CV Value Pack`: copy-ready CV bullets, recruiter summary, repo-proof mapping, and interview talking points
@@ -78,6 +79,7 @@ pip install -r requirements-ml.txt
 - it now aligns more directly with Athanasiadis through responsible AI, benchmark realism, knowledge-guided ML, and crop-yield-oriented framing
 - it uses the AgriscienceFM `G-E-M` concept instead of a generic multimodal story
 - it presents publishable research questions, OOD evaluation logic, and ablation design
+- it now maps the project directly to the vacancy duties, requested qualities, and required application documents
 - it now includes dataset planning, hypotheses, risks, and a reusable proposal builder
 - it now shows how the project reflects the vacancy's required qualities, duties, and ML capabilities
 - it now includes a CV-focused value pack so the repo can be presented as evidence of research readiness
@@ -98,6 +100,13 @@ pip install -r requirements-ml.txt
 - it frames benchmark design as a central contribution, especially for crop-yield and climate-stress-relevant tasks
 - it positions physics-aware learning as a bridge between process-based crop modeling and modern ML
 - it adds a roadmap toward plant phenomics, crop-yield benchmarking, and digital-twin or management extensions
+
+## Vacancy-Specific Upgrade
+
+- the app now includes a direct vacancy-matching section for the WUR PhD position
+- it maps the repo to the duties around self-supervised foundation models, multimodal architectures, HPC training, and benchmark development
+- it includes an application checklist for the CV, motivation letter, and scientific-writing sample, all capped at 3 pages each
+- it highlights the interview date of May 15, 2026 and flags the deadline inconsistency in the vacancy text: May 4, 2026 in the body versus May 5, 2026 in the footer
 
 ## Personalization And Evidence
 

@@ -106,21 +106,22 @@ POSITION_QUALITIES = pd.DataFrame(
     [
         ["Highly motivated", "Long-horizon benchmark plan, paper roadmap, and explicit research hypotheses"],
         ["Self-driven", "Proposal builder, independent project framing, and reproducible workflow thinking"],
-        ["Curious", "Multiple use cases, ablation questions, and supervisor-aware novelty framing"],
-        ["Dynamic team player", "G-E-M alignment and collaborative benchmark construction across modalities"],
+        ["Curious", "Multiple use cases, ablation questions, and vacancy-aware novelty framing"],
+        ["Dynamic international team fit", "Supervisor-aware collaboration story, benchmark construction, and interdisciplinary agricultural framing"],
         ["Applied ML background", "Remote sensing, multimodal SSL, OOD evaluation, and scientific ML positioning"],
-        ["Scientific writing", "Built-in CV, motivation-letter, abstract, and interview phrasing"],
+        ["Scientific writing", "Built-in CV, motivation-letter, proposal, technical report, and interview phrasing"],
+        ["English communication readiness", "Clear written exports and concise research summaries appropriate for an international PhD setting"],
     ],
     columns=["Quality from vacancy", "How the project demonstrates it"],
 )
 
 DUTY_ALIGNMENT = pd.DataFrame(
     [
-        ["State-of-the-art self-supervision", "Method Blueprint and literature-grounded SSL objectives"],
-        ["Design self-supervised architectures", "Multimodal G-E-M pipeline and fusion-oriented model sketch"],
-        ["Large-scale training on HPC", "PyTorch Lightning and reproducible training workflow emphasis"],
-        ["Write papers and present results", "Paper-style hypotheses, ablations, and reusable research abstracts"],
-        ["Collaborate on data and benchmarks", "Dataset Strategy page and OOD benchmark suite framing"],
+        ["Familiarize with state-of-the-art self-supervised methods", "Research Fit, Method Blueprint, and literature-grounded SSL objectives"],
+        ["Design, develop, and evaluate self-supervised architectures", "Multimodal G-E-M pipeline, model sketch, OOD plan, and benchmark framing"],
+        ["Perform large-scale training on HPC", "PyTorch Lightning, reproducible experiment workflow, and HPC-oriented stack choices"],
+        ["Disseminate research results through papers and conferences", "Hypotheses, proposal exports, technical report, and interview-ready summaries"],
+        ["Collaborate on datasets and downstream benchmarks", "Dataset Strategy page, benchmark suite framing, and supervisor-aware use-case design"],
     ],
     columns=["Vacancy duty", "Where the project shows it"],
 )
@@ -133,8 +134,43 @@ PHD_CAPABILITIES = pd.DataFrame(
         ["Remote sensing familiarity", "Sentinel-2, geospatial joins, field boundaries, and TorchGeo tooling"],
         ["Time-series modeling", "Weather streams, temporal encoders, and year-shift evaluation"],
         ["Research communication", "Abstract generator, application pitch, and publication-oriented ablations"],
+        ["International-team readiness", "Supervisor-aware framing, collaborative benchmark design, and clear written communication"],
+        ["English writing signal", "One-page proposal, motivation letter, technical report, and CV exports"],
     ],
     columns=["Capability", "How this project signals it"],
+)
+
+VACANCY_SCOPE = pd.DataFrame(
+    [
+        ["Research target", "Domain-specific foundation models for agricultural sciences"],
+        ["Core ML theme", "Modern self-supervised, contrastive, physics-informed, and knowledge-guided learning"],
+        ["Data modalities", "Text, location, images, and time-series agricultural signals"],
+        ["Priority tasks", "Crop type classification, crop yield forecasting, field boundary delineation, crop disease, and crop failure detection"],
+        ["Team setting", "Interdisciplinary AgriscienceFM collaboration across AI, remote sensing, crop modelling, and food security"],
+        ["Infrastructure expectation", "Large-scale training on HPC servers"],
+    ],
+    columns=["Vacancy dimension", "What the position asks for"],
+)
+
+APPLICATION_REQUIREMENTS = pd.DataFrame(
+    [
+        ["Curriculum vitae", "Maximum 3 pages", "Use the CV Value Pack bullets and repo assets from this app"],
+        ["Motivation letter", "Maximum 3 pages", "Use the WUR-specific letter export and keep it tightly matched to the vacancy"],
+        ["Scientific writing sample", "Maximum 3 pages", "Select your thesis/report section that best shows ML methods, evaluation, and writing clarity"],
+        ["Submission route", "Apply through the WUR vacancy website only", "Prepare documents locally, then upload through the official portal"],
+        ["Not required now", "Grades and transcripts", "Do not spend time adding extra files for this stage"],
+    ],
+    columns=["Application item", "Constraint", "Best project response"],
+)
+
+VACANCY_TIMELINE = pd.DataFrame(
+    [
+        ["Current reference date", "April 11, 2026", "This workspace date shows you still have time to tailor the application materials."],
+        ["Application deadline in vacancy body", "May 4, 2026", "Treat this as the safer target date for submission."],
+        ["Closing date shown in vacancy footer", "May 5, 2026", "The page text is inconsistent, so verify on the live submission form before final submission."],
+        ["First interviews", "May 15, 2026", "Prepare a short oral pitch on multimodal SSL, OOD benchmarking, and agricultural impact."],
+    ],
+    columns=["Milestone", "Date", "What to do"],
 )
 
 REFERENCES = [
@@ -708,6 +744,40 @@ def build_athanasiadis_talking_points(case_name: str) -> list[str]:
     ]
 
 
+def build_vacancy_fit(case_name: str) -> str:
+    case = USE_CASES[case_name]
+    return (
+        "This project now matches the vacancy more directly by framing the work around domain-specific agricultural foundation models, "
+        "multimodal heterogeneous data, image and time-series architectures, and rigorous out-of-distribution evaluation. "
+        f"The selected flagship use case, {case_name.lower()}, covers tasks such as {case['tasks'].lower()}, which are explicitly named or strongly implied by the vacancy."
+    )
+
+
+def build_application_checklist(case_name: str, profile: dict) -> str:
+    return (
+        "WUR Application Checklist\n"
+        f"Applicant: {profile['name']}\n"
+        f"Flagship use case: {case_name}\n\n"
+        "Documents to prepare\n"
+        "- CV: maximum 3 pages\n"
+        "- Motivation letter: maximum 3 pages\n"
+        "- Scientific writing sample written by you: maximum 3 pages\n\n"
+        "Do not include now\n"
+        "- Grades or transcripts are not required at this stage\n"
+        "- Extra files outside the requested set may be ignored\n\n"
+        "Project points to emphasize\n"
+        "- Self-supervised agricultural foundation models\n"
+        "- Multimodal data integration across images, location, text, and time series\n"
+        "- OOD robustness across region, year, sensor, and missing-modality shift\n"
+        "- Python, PyTorch, scikit-learn, and reproducible benchmark workflow\n"
+        "- Research communication through proposal, technical report, and application-ready exports\n\n"
+        "Dates to plan around\n"
+        "- Safer deadline target: May 4, 2026\n"
+        "- Vacancy footer also shows: May 5, 2026\n"
+        "- First interviews scheduled: May 15, 2026\n"
+    )
+
+
 def build_one_page_proposal(case_name: str, priority: str, novelty: str, profile: dict) -> str:
     case = USE_CASES[case_name]
     pitch = build_pitch(case_name, priority, novelty)
@@ -820,6 +890,7 @@ with st.sidebar:
             "Method Blueprint",
             "Poster Architecture",
             "Experimental Plan",
+            "Vacancy Match",
             "Dataset Strategy",
             "Candidate Fit",
             "CV Value Pack",
@@ -1075,6 +1146,43 @@ elif page == "Experimental Plan":
     with tab4:
         st.dataframe(HYPOTHESES, use_container_width=True, hide_index=True)
         st.dataframe(RISKS, use_container_width=True, hide_index=True)
+
+elif page == "Vacancy Match":
+    st.header("Vacancy Match")
+    st.markdown(
+        """
+        This page maps the project directly to the actual WUR PhD vacancy so the portfolio reads like a serious,
+        position-specific application asset rather than a generic research demo.
+        """
+    )
+    st.info(build_vacancy_fit(selected_case))
+    tab1, tab2, tab3, tab4 = st.tabs(["Position Scope", "Duties", "Application Pack", "Timeline"])
+    with tab1:
+        st.dataframe(VACANCY_SCOPE, use_container_width=True, hide_index=True)
+        st.markdown(
+            """
+            Best framing:
+            this project is about agriculture-specific foundation models that learn from multimodal heterogeneous data,
+            especially image and time-series signals, and are evaluated on tasks that matter for food security and agricultural decisions.
+            """
+        )
+    with tab2:
+        st.dataframe(DUTY_ALIGNMENT, use_container_width=True, hide_index=True)
+        st.dataframe(POSITION_QUALITIES, use_container_width=True, hide_index=True)
+        st.dataframe(PHD_CAPABILITIES, use_container_width=True, hide_index=True)
+    with tab3:
+        checklist = build_application_checklist(selected_case, profile)
+        st.dataframe(APPLICATION_REQUIREMENTS, use_container_width=True, hide_index=True)
+        st.text_area("Application checklist", value=checklist, height=320)
+        st.download_button(
+            "Download Application Checklist",
+            data=checklist,
+            file_name="wur_application_checklist.txt",
+            mime="text/plain",
+        )
+    with tab4:
+        st.dataframe(VACANCY_TIMELINE, use_container_width=True, hide_index=True)
+        st.warning("The vacancy body states May 4, 2026, while the footer shows May 5, 2026. Verify the final deadline on the live submission page before applying.")
 
 elif page == "Dataset Strategy":
     st.header("Dataset Strategy")
