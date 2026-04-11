@@ -16,14 +16,15 @@ PAIN_POINTS = [
     ("Generalization under shift", "Agricultural models often fail across regions, years, sensors, and management settings."),
     ("Fragmented modalities", "Satellite imagery, weather, field boundaries, and metadata are usually modeled separately."),
     ("Weak scientific grounding", "Purely data-driven systems may ignore crop dynamics and become less trustworthy."),
+    ("Benchmark realism", "Applied agricultural AI should be tested under climate stress, operational constraints, and stakeholder-relevant tasks."),
 ]
 
 SUPERVISORS = [
     {
         "name": "Prof. Ioannis Athanasiadis",
-        "focus": "Agricultural AI, food security, knowledge-guided ML",
-        "fit": "Frames the project around meaningful agri benchmarks, realistic deployment, and knowledge-guided learning.",
-        "line": "I want to build agricultural AI that remains useful under real-world variation and supports food-security-relevant tasks.",
+        "focus": "Responsible agricultural AI, benchmark realism, knowledge-guided ML, crop modeling, and use-inspired research",
+        "fit": "Frames the project around real-world agricultural impact, climate-stress-aware benchmarking, process-informed learning, and collaboration with domain experts.",
+        "line": "I want to build responsible agricultural AI that is benchmarked under realistic shift, informed by agricultural knowledge, and useful for food-system decisions.",
     },
     {
         "name": "Prof. Ricardo da Silva Torres",
@@ -163,6 +164,16 @@ USE_CASES = {
         "modalities": "Multispectral imagery, weather sequences, management context",
         "pitch": "Combines all three supervision strengths with practical value.",
     },
+    "Benchmarking crop yield under climate stress": {
+        "tasks": "Cross-region yield forecasting, climate-stress robustness, calibration under year shift",
+        "modalities": "Satellite imagery, weather time series, crop-growth priors, management metadata",
+        "pitch": "Direct Athanasiadis fit through benchmark realism, food-system relevance, and knowledge-guided agricultural AI.",
+    },
+    "Adaptive fertilizer management and digital twins": {
+        "tasks": "Nitrogen-efficiency support, management simulation, constrained decision recommendations",
+        "modalities": "Field observations, weather sequences, soil context, management actions",
+        "pitch": "Extends the project toward digital twins, reinforcement learning, and actionable farm decisions.",
+    },
 }
 
 DATASETS = pd.DataFrame(
@@ -172,6 +183,8 @@ DATASETS = pd.DataFrame(
         ["Field boundaries", "Parcel polygons and geospatial joins", "Management context and spatial grounding", "Athanasiadis"],
         ["Agronomic metadata", "Region, season, management notes, task labels", "Cross-modal alignment and retrieval", "Torres + Athanasiadis"],
         ["Crop-growth priors", "GDD, radiation-use signals, seasonal plausibility", "Physics-aware regularization", "Kapoor"],
+        ["Crop-model outputs", "Process-based simulation traces or seasonal indicators", "Hybrid knowledge-guided learning and crop-yield forecasting", "Athanasiadis + Kapoor"],
+        ["Phenomics signals", "Trait proxies, stress indicators, plant observations", "Plant phenomics and resilient phenotype representation learning", "Athanasiadis + Torres"],
     ],
     columns=["Dataset or signal", "Type", "Why include it", "Strongest supervisor link"],
 )
@@ -193,6 +206,52 @@ RISKS = pd.DataFrame(
         ["Benchmark too broad", "Start with one flagship use case and expand incrementally."],
     ],
     columns=["Research risk", "Mitigation"],
+)
+
+ATHANASIADIS_SIGNALS = pd.DataFrame(
+    [
+        ["Responsible AI for global challenges", "His chair group explicitly advances AI methods for responsible, use-inspired impact.", "Frame the project around food systems, climate stress, and decision-relevant agricultural outcomes."],
+        ["Use-inspired applied research", "He works in close cooperation with domain experts in environmental, social, and life sciences.", "Present the project as domain-aware benchmark and model design rather than generic ML experimentation."],
+        ["AgMIP AgML benchmark culture", "He co-founded and coordinates the AgMIP machine-learning effort.", "Emphasize reproducible crop-yield and climate-stress benchmarking as a central project contribution."],
+        ["Knowledge-guided ML in plant phenomics", "His talks and publications highlight knowledge-guided machine learning in agriculture and phenomics.", "Strengthen process-informed priors, phenotyping links, and scientifically grounded representation learning."],
+        ["Process-based models plus ML", "He explicitly frames process-based crop models and ML as complementary.", "Position physics-aware learning as a hybrid bridge between crop modeling and foundation models."],
+        ["Digital twins and reinforcement learning", "His recent work includes agricultural digital twins with reinforcement-learning intelligence.", "Add a roadmap from foundation models toward digital-twin and decision-support extensions."],
+        ["Constrained agronomic decision support", "His publication list includes constrained RL for adaptive fertilizer management.", "Show how the project could later support trustworthy, management-aware recommendations."],
+    ],
+    columns=["Athanasiadis signal", "What it says about his research", "How this project should respond"],
+)
+
+BENCHMARK_PRINCIPLES = pd.DataFrame(
+    [
+        ["Real-world task choice", "Benchmark crop-relevant problems such as yield forecasting, stress detection, and resilient phenotyping rather than toy image tasks."],
+        ["Stress-aware evaluation", "Include climate extremes, year shift, geography shift, and missing-modality settings as first-class benchmark splits."],
+        ["Knowledge-guided baselines", "Compare generic deep models, multimodal SSL, and knowledge-guided or process-aware variants."],
+        ["Operational usefulness", "Report calibration, transfer, robustness, and decision-relevant behavior instead of accuracy alone."],
+        ["Domain-expert fit", "Explain why each task matters to agronomy, food systems, breeders, or farm management."],
+        ["Transparent claims", "Separate sample workflow evidence from real-data findings to keep the project credible."],
+    ],
+    columns=["Benchmark principle", "Project implication"],
+)
+
+RESPONSIBLE_AI = pd.DataFrame(
+    [
+        ["Transparency", "Label sample results and illustrative targets honestly rather than overstating evidence."],
+        ["Use-inspired evaluation", "Focus on crop stress, yield, resilience, and management tasks that matter in practice."],
+        ["Robustness under shift", "Treat geographic, seasonal, and climatic variation as core evaluation settings."],
+        ["Scientific grounding", "Use crop-growth priors, agronomic assumptions, and process knowledge where useful."],
+        ["Human collaboration", "Frame the workflow as support for agronomists, breeders, and benchmark builders."],
+    ],
+    columns=["Responsible AI principle", "How the project demonstrates it"],
+)
+
+HYBRID_ROADMAP = pd.DataFrame(
+    [
+        ["Now", "Multimodal SSL + OOD benchmarking", "Strong fit for agricultural foundation models and benchmark design."],
+        ["Next", "Knowledge-guided crop-yield forecasting under climate stress", "Directly reflects Athanasiadis' yield and benchmarking interests."],
+        ["Then", "Phenotyping-aware and process-informed adaptation", "Links plant phenomics, scientific priors, and domain knowledge."],
+        ["Future", "Agricultural digital twins and constrained decision support", "Builds a credible bridge to RL, management, and interoperable digital twins."],
+    ],
+    columns=["Stage", "Upgrade", "Why it adds value"],
 )
 
 CV_SIGNAL_MAP = pd.DataFrame(
@@ -604,7 +663,7 @@ def build_pitch(case_name: str, priority: str, novelty: str) -> str:
         "benchmarking": "out-of-distribution benchmarking across region, year, and modality shift",
     }
     priority_map = {
-        "Athanasiadis": "agricultural relevance, food security, and benchmark realism",
+        "Athanasiadis": "responsible agricultural AI, food-system relevance, benchmark realism, and knowledge-guided learning",
         "Torres": "multimodal representation learning for remote sensing",
         "Kapoor": "scientific priors and trustworthy adaptation",
     }
@@ -627,6 +686,26 @@ def build_fit_statement(case_name: str, profile: dict) -> str:
         f"contribute to both model building and collaborative benchmark development from the perspective of {profile['degree']} "
         f"work centered on {profile['thesis_topic']}."
     )
+
+
+def build_athanasiadis_upgrade(case_name: str) -> str:
+    case = USE_CASES[case_name]
+    return (
+        f"To align the project more directly with Prof. Athanasiadis, the strongest framing is to treat {case_name.lower()} "
+        "as a benchmarked, knowledge-guided agricultural AI problem rather than only a multimodal modeling problem. "
+        f"That means centering tasks such as {case['tasks'].lower()}, evaluating them under realistic climatic and geographic shift, "
+        "and showing how process-based signals, agronomic priors, and responsible evaluation make the work more useful for real agricultural decisions."
+    )
+
+
+def build_athanasiadis_talking_points(case_name: str) -> list[str]:
+    return [
+        "This project treats agricultural AI as a responsible, use-inspired research problem connected to food systems and environmental stress.",
+        f"The flagship use case of {case_name.lower()} is framed as a benchmark problem with realistic out-of-distribution evaluation, not just a single-model demo.",
+        "The knowledge-guided layer is intentionally positioned as a bridge between crop modeling and modern representation learning.",
+        "The repo is structured so it can grow toward crop-yield forecasting, plant phenomics, and digital-twin decision support without losing credibility.",
+        "That makes the project feel closer to Athanasiadis' style of agricultural AI: benchmarked, domain-aware, collaborative, and practically grounded.",
+    ]
 
 
 def build_one_page_proposal(case_name: str, priority: str, novelty: str, profile: dict) -> str:
@@ -671,7 +750,7 @@ def build_one_page_proposal(case_name: str, priority: str, novelty: str, profile
 def build_motivation_letter(case_name: str, priority: str, novelty: str, profile: dict) -> str:
     case = USE_CASES[case_name]
     priority_map = {
-        "Athanasiadis": "agricultural impact, benchmark realism, and knowledge-guided learning",
+        "Athanasiadis": "responsible agricultural AI, benchmark realism, and knowledge-guided learning",
         "Torres": "multimodal self-supervised representation learning for remote sensing",
         "Kapoor": "physics-informed scientific machine learning for robust adaptation",
     }
@@ -737,6 +816,7 @@ with st.sidebar:
         [
             "Overview",
             "Research Fit",
+            "Athanasiadis Upgrade",
             "Method Blueprint",
             "Poster Architecture",
             "Experimental Plan",
@@ -795,7 +875,7 @@ if page == "Overview":
         metric("Application value", "High", "Depth and focus together")
 
     st.markdown("### Vacancy pain points")
-    cols = st.columns(3)
+    cols = st.columns(len(PAIN_POINTS))
     for col, (title, text) in zip(cols, PAIN_POINTS):
         with col:
             card(title, text)
@@ -852,6 +932,60 @@ elif page == "Research Fit":
             - OOD benchmarking as a first-class goal.
             """
         )
+
+elif page == "Athanasiadis Upgrade":
+    st.header("Athanasiadis Upgrade")
+    st.markdown(
+        """
+        This page sharpens the project toward Prof. Ioannis Athanasiadis' research style:
+        responsible agricultural AI, benchmark realism, knowledge-guided machine learning,
+        climate-stress-aware crop modeling, and collaboration with domain experts.
+        """
+    )
+    st.info(build_athanasiadis_upgrade(selected_case))
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+        metric("Professor fit", "Stronger", "More benchmarked and applied")
+    with c2:
+        metric("Athanasiadis themes", "7", "From AgML to digital twins")
+    with c3:
+        metric("Responsible AI", "Explicit", "Now visible in the project")
+    with c4:
+        metric("Upgrade path", "Hybrid", "Foundation models + crop knowledge")
+
+    tab1, tab2, tab3, tab4 = st.tabs(["Research Signals", "Benchmark Upgrade", "Responsible AI", "Roadmap"])
+    with tab1:
+        st.dataframe(ATHANASIADIS_SIGNALS, use_container_width=True, hide_index=True)
+        st.markdown("### Best oral framing")
+        st.markdown(
+            """
+            I want to build agricultural AI that is not only accurate, but also responsibly benchmarked,
+            scientifically grounded, and useful under the kinds of climate and management variation that matter in practice.
+            """
+        )
+    with tab2:
+        st.dataframe(BENCHMARK_PRINCIPLES, use_container_width=True, hide_index=True)
+        st.markdown("### Project shift")
+        st.markdown(
+            """
+            The app now reads more like a benchmark-and-method agenda for agricultural AI.
+            That is a better match for Athanasiadis than a purely architecture-centered pitch.
+            """
+        )
+    with tab3:
+        st.dataframe(RESPONSIBLE_AI, use_container_width=True, hide_index=True)
+        st.markdown("### Why this matters")
+        st.markdown(
+            """
+            His group explicitly aims to advance AI methods for global challenges in a responsible way.
+            Showing this mindset makes your project look more mature and more aligned with the chair group.
+            """
+        )
+    with tab4:
+        st.dataframe(HYBRID_ROADMAP, use_container_width=True, hide_index=True)
+        st.markdown("### Interview talking points")
+        for point in build_athanasiadis_talking_points(selected_case):
+            st.markdown(f"- {point}")
 
 elif page == "Method Blueprint":
     st.header("Method Blueprint")
@@ -925,6 +1059,7 @@ elif page == "Experimental Plan":
             st.dataframe(OOD, use_container_width=True, hide_index=True)
             st.plotly_chart(heatmap_fig(), use_container_width=True)
         st.markdown("**Core message:** optimize for transfer and robustness, not only in-domain accuracy.")
+        st.dataframe(BENCHMARK_PRINCIPLES, use_container_width=True, hide_index=True)
     with tab2:
         st.dataframe(ABLATIONS, use_container_width=True, hide_index=True)
         st.markdown(
@@ -979,6 +1114,7 @@ elif page == "Candidate Fit":
         st.info(build_fit_statement(selected_case, profile))
     with tab3:
         st.dataframe(STACK_DETAILS, use_container_width=True, hide_index=True)
+        st.dataframe(RESPONSIBLE_AI, use_container_width=True, hide_index=True)
         st.markdown(
             """
             Best message to send:
@@ -1080,7 +1216,7 @@ elif page == "Supervisor Alignment":
         st.markdown(
             """
             ### Combined supervision story
-            - **Athanasiadis layer:** agricultural relevance, food security, benchmark realism.
+            - **Athanasiadis layer:** responsible agricultural AI, food security, benchmark realism, and knowledge-guided learning.
             - **Torres layer:** self-supervised representation learning for multimodal remote sensing.
             - **Kapoor layer:** scientific priors and physics-aware reliability.
 
@@ -1165,6 +1301,13 @@ elif page == "Application Pitch":
         st.markdown("### CV bullet")
         cv_summary = summarize_experiment_evidence(load_experiment_logs(uploaded_log_file)[0])
         st.markdown(build_cv_bullets(selected_case, novelty_priority, cv_summary)[0])
+        st.markdown("### Athanasiadis-focused line")
+        st.markdown(
+            """
+            Developed a benchmark-oriented agricultural AI portfolio that combines multimodal foundation models,
+            knowledge-guided learning, and responsible evaluation under climate and geographic shift.
+            """
+        )
     with tabs[1]:
         st.markdown(
             """

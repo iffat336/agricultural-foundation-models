@@ -30,6 +30,7 @@ This app turns those ideas into one coherent project narrative:
 
 - `Overview`: vacancy pain points, project thesis, and honest benchmark targets
 - `Research Fit`: professor-aware framing and the AgriscienceFM `G-E-M` lens
+- `Athanasiadis Upgrade`: responsible AI, benchmark realism, knowledge-guided ML, and crop-model-aware project framing
 - `Method Blueprint`: multimodal pipeline, SSL objectives, and physics-aware layer
 - `Poster Architecture`: a visual interview-ready summary of the full research pipeline
 - `Experimental Plan`: OOD splits, ablations, and the technical stack
@@ -74,6 +75,7 @@ pip install -r requirements-ml.txt
 ## Why The New Version Is Stronger
 
 - it now reflects the supervisors' current research directions more explicitly
+- it now aligns more directly with Athanasiadis through responsible AI, benchmark realism, knowledge-guided ML, and crop-yield-oriented framing
 - it uses the AgriscienceFM `G-E-M` concept instead of a generic multimodal story
 - it presents publishable research questions, OOD evaluation logic, and ablation design
 - it now includes dataset planning, hypotheses, risks, and a reusable proposal builder
@@ -89,6 +91,13 @@ pip install -r requirements-ml.txt
 - it shows technical execution: benchmark utilities, prototype training flow, and experiment schema
 - it shows scientific communication: proposal, motivation-letter, CV, and interview-ready exports
 - it shows honest judgment: sample evidence is labeled as scaffolded workflow, not inflated as finished results
+
+## Athanasiadis-Specific Upgrade
+
+- the project now emphasizes responsible AI for global agricultural challenges rather than only model novelty
+- it frames benchmark design as a central contribution, especially for crop-yield and climate-stress-relevant tasks
+- it positions physics-aware learning as a bridge between process-based crop modeling and modern ML
+- it adds a roadmap toward plant phenomics, crop-yield benchmarking, and digital-twin or management extensions
 
 ## Personalization And Evidence
 
