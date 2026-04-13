@@ -28,15 +28,15 @@ SUPERVISORS = [
     },
     {
         "name": "Prof. Ricardo da Silva Torres",
-        "focus": "Self-supervised learning, computer vision, multimodal remote sensing",
-        "fit": "Anchors the representation-learning side through contrastive and multimodal pretraining.",
-        "line": "I want to study how agriculture-specific multimodal representations can be learned from satellite imagery and related signals.",
+        "focus": "Data science, visual computing, multimedia analysis and retrieval, information visualisation, and multimodal remote sensing AI",
+        "fit": "Anchors the representation-learning and data-centric side through multimodal retrieval, visual analytics, scalable representation learning, and benchmark-oriented eScience workflows.",
+        "line": "I want to study how agriculture-specific multimodal representations can support not only prediction, but also retrieval, exploration, and visual understanding across agricultural datasets.",
     },
     {
         "name": "Dr. Taniya Kapoor",
-        "focus": "Physics-informed ML, scientific machine learning, foundation models for science",
-        "fit": "Drives the scientific-ML layer through constraints, priors, and physically grounded adaptation.",
-        "line": "I am interested in combining representation learning with scientific priors so models become more trustworthy under shift.",
+        "focus": "Physics-informed ML, scientific machine learning, trustworthy adaptation, and foundation models for science",
+        "fit": "Drives the scientific-ML layer through constraints, priors, plausibility checks, and physically grounded adaptation under shift.",
+        "line": "I am interested in combining representation learning with scientific priors so agricultural foundation models become more trustworthy, stable, and scientifically meaningful under shift.",
     },
 ]
 
@@ -210,6 +210,11 @@ USE_CASES = {
         "modalities": "Field observations, weather sequences, soil context, management actions",
         "pitch": "Extends the project toward digital twins, reinforcement learning, and actionable farm decisions.",
     },
+    "Multimodal agricultural retrieval and visual analytics": {
+        "tasks": "Cross-modal field retrieval, failure-case exploration, benchmark visual analytics, and evidence search across agricultural datasets",
+        "modalities": "Satellite imagery, weather streams, geolocation, metadata, and text annotations",
+        "pitch": "Direct Torres fit through multimedia retrieval, visual computing, data-centric eScience, and interpretable benchmark exploration.",
+    },
 }
 
 DATASETS = pd.DataFrame(
@@ -218,6 +223,7 @@ DATASETS = pd.DataFrame(
         ["ERA5 or weather station data", "Temperature, rainfall, radiation, humidity", "Temporal context and environment module", "Athanasiadis + Kapoor"],
         ["Field boundaries", "Parcel polygons and geospatial joins", "Management context and spatial grounding", "Athanasiadis"],
         ["Agronomic metadata", "Region, season, management notes, task labels", "Cross-modal alignment and retrieval", "Torres + Athanasiadis"],
+        ["Field notes and text reports", "Text annotations, descriptions, and weak supervision cues", "Supports text-image-location learning and agricultural retrieval workflows", "Torres + Athanasiadis"],
         ["Crop-growth priors", "GDD, radiation-use signals, seasonal plausibility", "Physics-aware regularization", "Kapoor"],
         ["Crop-model outputs", "Process-based simulation traces or seasonal indicators", "Hybrid knowledge-guided learning and crop-yield forecasting", "Athanasiadis + Kapoor"],
         ["Phenomics signals", "Trait proxies, stress indicators, plant observations", "Plant phenomics and resilient phenotype representation learning", "Athanasiadis + Torres"],
@@ -290,10 +296,109 @@ HYBRID_ROADMAP = pd.DataFrame(
     columns=["Stage", "Upgrade", "Why it adds value"],
 )
 
+TORRES_SIGNALS = pd.DataFrame(
+    [
+        ["Multimedia analysis", "His work spans multimedia analysis across heterogeneous data.", "Treat agriculture as a multimodal data science problem, not only an image-classification problem."],
+        ["Multimedia retrieval", "He has worked extensively on retrieval-oriented systems.", "Add image-text-location retrieval, nearest-neighbour exploration, and benchmark-search capabilities to the project story."],
+        ["Visual computing", "His background includes visual computing and advanced representation learning.", "Strengthen computer-vision framing for remote sensing, phenotyping, and cross-view agricultural understanding."],
+        ["Information visualisation", "He works on making data and model behaviour explorable.", "Include visual analytics for benchmark failures, OOD drift, and cross-modal embeddings."],
+        ["Databases and scalable data science", "His research connects ML with data infrastructure and eScience workflows.", "Present the repo as an extensible data-and-model platform, not just one model architecture."],
+        ["Multidisciplinary eScience", "He develops multidisciplinary research systems rather than isolated methods.", "Emphasize reusable pipelines, benchmark tooling, and collaborative scientific workflows."],
+    ],
+    columns=["Torres signal", "What it says about his research", "How this project should respond"],
+)
+
+KAPOOR_SIGNALS = pd.DataFrame(
+    [
+        ["Scientific machine learning", "She works at the intersection of ML and scientific structure.", "Keep the project grounded in crop processes, seasonality, and scientific plausibility."],
+        ["Physics-informed modeling", "Her profile emphasizes physics-aware learning.", "Use soft constraints, priors, and mechanism-aware regularization in adaptation and evaluation."],
+        ["Trustworthy adaptation", "Scientific priors should improve stability under shift.", "Highlight calibration, robustness, and reliable transfer rather than raw performance alone."],
+        ["Foundation models for science", "She connects modern foundation models to scientific domains.", "Position the repo as a science-facing foundation-model portfolio rather than a generic AI demo."],
+    ],
+    columns=["Kapoor signal", "What it says about her research", "How this project should respond"],
+)
+
+SUPERVISOR_SYNERGY = pd.DataFrame(
+    [
+        ["Athanasiadis", "Responsible agricultural AI, benchmarks, food-system impact", "Defines the real agricultural problems, benchmark realism, and use-inspired research agenda"],
+        ["Torres", "Multimodal representations, retrieval, visual analytics, scalable data science", "Makes the project more original through retrieval, visual exploration, and data-centric model understanding"],
+        ["Kapoor", "Physics-informed ML, scientific constraints, trustworthy adaptation", "Adds scientific credibility, plausibility, and reliability under real-world shift"],
+        ["Vacancy requirements", "SSL, multimodal data, HPC, papers, collaboration", "Turns the three-supervisor concept into a position-specific PhD portfolio"],
+    ],
+    columns=["Layer", "Core contribution", "Why it matters in your project"],
+)
+
+UNIQUE_ADVANTAGES = pd.DataFrame(
+    [
+        ["Not just prediction", "The project now includes retrieval, benchmark visual analytics, and scientific explanation paths."],
+        ["Not just deep learning", "It combines SSL, knowledge-guided learning, and physics-aware adaptation."],
+        ["Not just one professor fit", "It has a clear role for Athanasiadis, Torres, and Kapoor in one coherent agenda."],
+        ["Not just a vacancy summary", "It includes reusable exports, benchmark artifacts, and research-portfolio framing for your CV."],
+        ["Not just a dashboard", "It reads like a PhD-ready research platform with extensible workflows and scientific positioning."],
+    ],
+    columns=["Why the project is distinctive", "Project upgrade"],
+)
+
+POSITION_PAINPOINT_ENGINE = pd.DataFrame(
+    [
+        ["Subtle distribution shift", "Agricultural models fail when geography, year, climate, or sensor conditions change slightly.", "OOD benchmark suite, climate-stress splits, calibration tracking, and robust adaptation.", "Athanasiadis + Kapoor"],
+        ["Heterogeneous multimodal data", "The vacancy stresses text, location, images, and time-series data.", "Text-image-location-time fusion with cross-modal contrastive learning and retrieval-aware latent spaces.", "Torres + Kapoor + Athanasiadis"],
+        ["Weak agriculture-specific latent structure", "Generic pretrained models may not capture agricultural semantics well.", "G-E-M-aligned self-supervised learning with task-aware latent diagnostics and retrieval evaluation.", "Torres + Athanasiadis"],
+        ["Lack of scientific grounding", "Purely data-driven systems can be brittle or hard to trust.", "Crop-growth priors, plausibility constraints, and knowledge-guided adaptation.", "Kapoor + Athanasiadis"],
+        ["Fragmented evaluation culture", "Benchmarks and downstream tasks are often disconnected from real agricultural use.", "Benchmark matrix covering crop type, yield, disease, failure detection, and field boundaries.", "Athanasiadis + Torres"],
+        ["Need for dynamic intelligent systems", "The vacancy aims at systems that provide further insight into food-security-relevant applications.", "Retrieval, visual analytics, digital-twin extensions, and actionable model inspection workflows.", "All three"],
+    ],
+    columns=["Pain point from position", "Why it matters", "Advanced project response", "Strongest supervision link"],
+)
+
+ADVANCED_RESEARCH_MODULES = pd.DataFrame(
+    [
+        ["Multimodal foundation encoder", "Learns unified agricultural representations from imagery, weather, location, metadata, and text."],
+        ["Cross-modal retrieval head", "Supports field search, similar-case retrieval, and failure-case exploration across modalities."],
+        ["Scientific consistency head", "Uses crop-growth priors and plausibility checks to regularize adaptation under shift."],
+        ["OOD benchmark engine", "Evaluates region, year, climate-stress, sensor, and missing-modality generalization."],
+        ["Visual analytics layer", "Turns benchmark outputs into explorable views for scientific analysis and communication."],
+        ["Decision-support extension path", "Connects foundation models to digital twins, constrained management, and food-security use cases."],
+    ],
+    columns=["Advanced module", "Role in the upgraded project"],
+)
+
+BENCHMARK_MATRIX = pd.DataFrame(
+    [
+        ["Crop type classification", "Imagery + location + field boundaries", "Macro-F1, calibration, region transfer", "Remote sensing and domain-specific representation quality"],
+        ["Crop yield forecasting", "Imagery + weather + crop priors + metadata", "RMSE, calibration, year shift, climate-stress robustness", "Food security and benchmark realism"],
+        ["Field boundary delineation", "Imagery + geospatial context", "IoU, boundary F1, sensor transfer", "Spatial precision and operational relevance"],
+        ["Crop disease detection", "Imagery + weather + text notes", "AUC, ECE, low-label robustness", "Multimodal risk detection and retrieval support"],
+        ["Crop failure detection", "Imagery + weather + management context", "F1, recall, early-warning lead time", "Actionable failure analysis under shift"],
+        ["Multimodal retrieval and analytics", "Image + text + location + metadata", "Recall@K, cluster purity, failure-case coverage", "Torres-style retrieval and visual exploration"],
+    ],
+    columns=["Task", "Modalities", "Key metrics", "Why it belongs"],
+)
+
+PROFESSOR_METHOD_MATRIX = pd.DataFrame(
+    [
+        ["Athanasiadis", "Responsible AI, benchmark realism, crop modelling, food security", "Climate-stress benchmarks, use-inspired task design, agronomic context, food-system framing"],
+        ["Torres", "Multimedia retrieval, visual computing, data science, information visualisation", "Cross-modal retrieval, visual analytics, scalable representation learning, data-centric benchmark exploration"],
+        ["Kapoor", "Physics-informed ML, scientific machine learning, trustworthy adaptation", "Priors, constraints, scientific consistency, calibration-aware adaptation under shift"],
+        ["Vacancy", "SSL, multimodal data, HPC, papers, collaboration", "Turns the three methodological layers into a concrete PhD-ready execution plan"],
+    ],
+    columns=["Source", "Research identity", "What the project should implement or signal"],
+)
+
+ADVANCED_RESEARCH_QUESTIONS = pd.DataFrame(
+    [
+        ["RQ1", "How can agriculture-specific multimodal SSL learn latent spaces that support both prediction and retrieval across tasks and modalities?"],
+        ["RQ2", "When do scientific priors improve robustness, calibration, and failure detection under geographic, climatic, and temporal shift?"],
+        ["RQ3", "How should agricultural benchmarks be designed so they remain useful for real food-security and management problems rather than narrow in-domain scoring?"],
+        ["RQ4", "Can visual analytics and retrieval make foundation-model behavior more interpretable and reusable for interdisciplinary agricultural research teams?"],
+    ],
+    columns=["Research question", "Advanced framing"],
+)
+
 CV_SIGNAL_MAP = pd.DataFrame(
     [
         ["Research framing", "Professor-aware project arc, hypotheses, risks, and one-page proposal export", "Shows you can define a coherent PhD agenda instead of only building a demo"],
-        ["Technical execution", "OOD benchmark utility, dummy multimodal training script, and experiment-log schema", "Signals hands-on Python, PyTorch, evaluation, and workflow design"],
+        ["Technical execution", "OOD benchmark utility, synthetic study trainer, and experiment-log schema", "Signals hands-on Python, PyTorch, evaluation, and workflow design"],
         ["Scientific communication", "Motivation letter, interview pitch, and CV-oriented exports inside the app", "Shows writing clarity and the ability to translate research into application materials"],
         ["Portfolio maturity", "README, technical report, repo artifacts, and downloadable summaries", "Makes the repository easier for supervisors and recruiters to scan quickly"],
     ],
@@ -308,28 +413,38 @@ def style() -> None:
             @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
             .stApp {
                 background:
-                    radial-gradient(circle at 10% 10%, rgba(181,107,63,0.18), transparent 24%),
-                    radial-gradient(circle at 88% 12%, rgba(46,106,70,0.16), transparent 22%),
-                    linear-gradient(180deg, #f8f4ec 0%, #f4efe6 100%);
+                    radial-gradient(circle at 12% 12%, rgba(0,194,255,0.12), transparent 24%),
+                    radial-gradient(circle at 86% 10%, rgba(88,255,182,0.10), transparent 20%),
+                    radial-gradient(circle at 50% 100%, rgba(255,184,77,0.08), transparent 26%),
+                    linear-gradient(180deg, #050505 0%, #0b0b0d 48%, #111216 100%);
             }
-            html, body, [class*="css"] { font-family: "IBM Plex Sans", sans-serif; }
-            h1, h2, h3, h4 { font-family: "Space Grotesk", sans-serif; color: #18231f; }
-            [data-testid="stSidebar"] { background: rgba(248,244,236,0.97); }
+            html, body, [class*="css"] {
+                font-family: "IBM Plex Sans", sans-serif;
+                color: #f4f7fb;
+            }
+            h1, h2, h3, h4 { font-family: "Space Grotesk", sans-serif; color: #f8fbff; }
+            p, li, label, .stMarkdown, .stCaption { color: #d2d9e3; }
+            [data-testid="stSidebar"] {
+                background:
+                    linear-gradient(180deg, rgba(12,14,18,0.98) 0%, rgba(7,8,11,0.98) 100%);
+                border-right: 1px solid rgba(255,255,255,0.08);
+            }
             .hero, .card, .metric {
-                background: rgba(255,252,247,0.84);
-                border: 1px solid rgba(24,35,31,0.10);
+                background: linear-gradient(180deg, rgba(20,22,28,0.92) 0%, rgba(11,13,17,0.94) 100%);
+                border: 1px solid rgba(255,255,255,0.10);
                 border-radius: 24px;
-                box-shadow: 0 12px 32px rgba(24,35,31,0.05);
+                box-shadow: 0 18px 40px rgba(0,0,0,0.35);
             }
             .hero { padding: 2rem 2.2rem; }
             .card { padding: 1rem; height: 100%; }
             .metric { padding: 1rem; }
-            .kicker { color: #2e6a46; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.88rem; font-weight: 700; }
+            .kicker { color: #54f0c4; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.88rem; font-weight: 700; }
             .hero-title { font-size: 3rem; line-height: 1.0; margin: 0.35rem 0 1rem 0; }
-            .muted { color: #5b685f; }
-            .metric-label { color: #5b685f; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.06em; }
+            .muted { color: #a8b3c2; }
+            .metric-label { color: #8d98a8; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.06em; }
             .metric-value { font-family: "Space Grotesk", sans-serif; font-size: 1.95rem; margin: 0.2rem 0; }
-            .metric-note { color: #2e6a46; font-weight: 600; }
+            .metric-value, .card h4, .hero, .poster-panel h4 { color: #f8fbff; }
+            .metric-note { color: #54f0c4; font-weight: 600; }
             .poster-grid {
                 display: grid;
                 grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -337,12 +452,12 @@ def style() -> None:
                 margin-top: 1rem;
             }
             .poster-panel {
-                background: linear-gradient(160deg, rgba(255,252,247,0.95), rgba(239,226,216,0.70));
-                border: 1px solid rgba(24,35,31,0.10);
+                background: linear-gradient(160deg, rgba(18,21,27,0.95), rgba(7,10,14,0.90));
+                border: 1px solid rgba(255,255,255,0.10);
                 border-radius: 26px;
                 padding: 1rem 1.1rem;
                 min-height: 190px;
-                box-shadow: 0 18px 36px rgba(24,35,31,0.06);
+                box-shadow: 0 18px 36px rgba(0,0,0,0.32);
             }
             .poster-panel h4 {
                 margin-bottom: 0.55rem;
@@ -351,13 +466,16 @@ def style() -> None:
                 display: inline-block;
                 padding: 0.2rem 0.55rem;
                 border-radius: 999px;
-                background: rgba(46,106,70,0.12);
-                color: #2e6a46;
+                background: rgba(84,240,196,0.12);
+                color: #54f0c4;
                 font-size: 0.78rem;
                 font-weight: 700;
                 margin-bottom: 0.7rem;
                 text-transform: uppercase;
                 letter-spacing: 0.05em;
+            }
+            [data-testid="stDataFrame"], div[data-baseweb="select"], div[data-baseweb="input"] > div {
+                border-radius: 18px;
             }
         </style>
         """,
@@ -381,32 +499,39 @@ def bar_fig() -> go.Figure:
     base = [61, 58, 54, 49, 45]
     target = [71, 68, 64, 60, 57]
     fig = go.Figure()
-    fig.add_bar(name="Typical baseline", x=x, y=base, marker_color="#b56b3f")
-    fig.add_bar(name="Project target", x=x, y=target, marker_color="#2e6a46")
+    fig.add_bar(name="Typical baseline", x=x, y=base, marker_color="#ff9f43")
+    fig.add_bar(name="Project target", x=x, y=target, marker_color="#54f0c4")
     fig.update_layout(
         barmode="group",
         paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(255,255,255,0.62)",
+        plot_bgcolor="rgba(16,18,24,0.88)",
         margin=dict(l=20, r=20, t=30, b=10),
         legend=dict(orientation="h", y=1.12, x=0),
         yaxis_title="Illustrative OOD score",
+        font=dict(color="#ecf2ff"),
     )
-    fig.update_yaxes(gridcolor="rgba(24,35,31,0.08)")
+    fig.update_xaxes(gridcolor="rgba(255,255,255,0.05)")
+    fig.update_yaxes(gridcolor="rgba(255,255,255,0.08)")
     return fig
 
 
 def radar_fig() -> go.Figure:
     axes = ["Agri impact", "SSL", "Multimodal RS", "Scientific ML", "Benchmarks"]
     fig = go.Figure()
-    fig.add_trace(go.Scatterpolar(r=[5, 3, 3, 4, 5], theta=axes, fill="toself", name="Athanasiadis", line_color="#2e6a46"))
-    fig.add_trace(go.Scatterpolar(r=[3, 5, 5, 2, 4], theta=axes, fill="toself", name="Torres", line_color="#b56b3f"))
-    fig.add_trace(go.Scatterpolar(r=[3, 3, 2, 5, 3], theta=axes, fill="toself", name="Kapoor", line_color="#607b68"))
-    fig.add_trace(go.Scatterpolar(r=[5, 5, 5, 5, 5], theta=axes, fill="toself", name="Project fit", line_color="#18231f"))
+    fig.add_trace(go.Scatterpolar(r=[5, 3, 3, 4, 5], theta=axes, fill="toself", name="Athanasiadis", line_color="#54f0c4", fillcolor="rgba(84,240,196,0.14)"))
+    fig.add_trace(go.Scatterpolar(r=[3, 5, 5, 2, 4], theta=axes, fill="toself", name="Torres", line_color="#4fc3ff", fillcolor="rgba(79,195,255,0.12)"))
+    fig.add_trace(go.Scatterpolar(r=[3, 3, 2, 5, 3], theta=axes, fill="toself", name="Kapoor", line_color="#b18cff", fillcolor="rgba(177,140,255,0.12)"))
+    fig.add_trace(go.Scatterpolar(r=[5, 5, 5, 5, 5], theta=axes, fill="toself", name="Project fit", line_color="#f8fbff", fillcolor="rgba(248,251,255,0.07)"))
     fig.update_layout(
-        polar=dict(bgcolor="rgba(255,255,255,0.55)", radialaxis=dict(visible=True, range=[0, 5])),
+        polar=dict(
+            bgcolor="rgba(16,18,24,0.88)",
+            radialaxis=dict(visible=True, range=[0, 5], gridcolor="rgba(255,255,255,0.08)", linecolor="rgba(255,255,255,0.08)"),
+            angularaxis=dict(gridcolor="rgba(255,255,255,0.08)", linecolor="rgba(255,255,255,0.08)"),
+        ),
         paper_bgcolor="rgba(0,0,0,0)",
         margin=dict(l=20, r=20, t=25, b=20),
         legend=dict(orientation="h", y=1.13, x=0),
+        font=dict(color="#ecf2ff"),
     )
     return fig
 
@@ -418,7 +543,7 @@ def sankey_fig() -> go.Figure:
             pad=20,
             thickness=18,
             label=["G inputs", "E inputs", "M inputs", "Vision SSL", "Temporal SSL", "Geo fusion", "Cross-modal alignment", "Physics layer", "OOD suite", "Crop tasks"],
-            color=["#b56b3f", "#b56b3f", "#b56b3f", "#2e6a46", "#2e6a46", "#2e6a46", "#607b68", "#18231f", "#607b68", "#2e6a46"],
+            color=["#ff9f43", "#ff9f43", "#ff9f43", "#54f0c4", "#54f0c4", "#54f0c4", "#4fc3ff", "#f8fbff", "#b18cff", "#54f0c4"],
         ),
         link=dict(
             source=[0, 1, 2, 3, 4, 5, 6, 7, 7],
@@ -426,7 +551,7 @@ def sankey_fig() -> go.Figure:
             value=[6, 6, 4, 7, 6, 4, 9, 6, 7],
         ),
     ))
-    fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", margin=dict(l=10, r=10, t=20, b=10))
+    fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", margin=dict(l=10, r=10, t=20, b=10), font=dict(color="#ecf2ff"))
     return fig
 
 
@@ -443,14 +568,15 @@ def heatmap_fig() -> go.Figure:
             z=values,
             x=cols,
             y=rows,
-            colorscale=[[0, "#efe2d8"], [0.5, "#9bbcaa"], [1, "#2e6a46"]],
+            colorscale=[[0, "#111317"], [0.45, "#214154"], [0.7, "#2d8f74"], [1, "#54f0c4"]],
             showscale=False,
         )
     )
     fig.update_layout(
         paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(255,255,255,0.62)",
+        plot_bgcolor="rgba(16,18,24,0.88)",
         margin=dict(l=20, r=20, t=20, b=10),
+        font=dict(color="#ecf2ff"),
     )
     return fig
 
@@ -491,9 +617,9 @@ def evidence_fig(df: pd.DataFrame) -> go.Figure:
     )
     fig = go.Figure()
     palette = {
-        "baseline": "#b56b3f",
-        "multimodal_ssl": "#607b68",
-        "physics_aware_fm": "#2e6a46",
+        "baseline": "#ff9f43",
+        "multimodal_ssl": "#4fc3ff",
+        "physics_aware_fm": "#54f0c4",
     }
     for variant in summary["model_variant"].unique():
         subset = summary[summary["model_variant"] == variant]
@@ -501,17 +627,19 @@ def evidence_fig(df: pd.DataFrame) -> go.Figure:
             name=variant,
             x=subset["split"],
             y=subset["score"],
-            marker_color=palette.get(variant, "#18231f"),
+            marker_color=palette.get(variant, "#f8fbff"),
         )
     fig.update_layout(
         barmode="group",
         paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(255,255,255,0.62)",
+        plot_bgcolor="rgba(16,18,24,0.88)",
         margin=dict(l=20, r=20, t=25, b=10),
         legend=dict(orientation="h", y=1.12, x=0),
         yaxis_title="Observed score from experiment logs",
+        font=dict(color="#ecf2ff"),
     )
-    fig.update_yaxes(gridcolor="rgba(24,35,31,0.08)")
+    fig.update_xaxes(gridcolor="rgba(255,255,255,0.05)")
+    fig.update_yaxes(gridcolor="rgba(255,255,255,0.08)")
     return fig
 
 
@@ -557,15 +685,58 @@ def summarize_experiment_evidence(df: pd.DataFrame) -> dict:
     return summary
 
 
+def build_pilot_findings(df: pd.DataFrame) -> list[str]:
+    observed = df.dropna(subset=["score"]).copy()
+    if observed.empty:
+        return []
+
+    findings: list[str] = []
+    baseline_rows = observed[observed["model_variant"] == "baseline"]
+    if not baseline_rows.empty:
+        weakest = baseline_rows.sort_values("score").iloc[0]
+        findings.append(
+            f"The image-only baseline is weakest on {weakest['split'].lower()} with score {weakest['score']:.2f}, which supports the argument that agricultural shift is not solved by vision-only modeling."
+        )
+
+    comparison = observed.pivot_table(index="split", columns="model_variant", values="score", aggfunc="mean")
+    if {"baseline", "multimodal_ssl"}.issubset(comparison.columns):
+        gains = (comparison["multimodal_ssl"] - comparison["baseline"]).dropna()
+        if not gains.empty:
+            top_split = gains.idxmax()
+            findings.append(
+                f"The multimodal model shows its clearest advantage on {top_split.lower()}, improving over the baseline by about {gains.loc[top_split]:.2f} score points."
+            )
+
+    missing_rows = observed[observed["split"].astype(str).str.lower() == "missing modality"]
+    if not missing_rows.empty:
+        weakest_missing = missing_rows.sort_values("score").iloc[0]
+        findings.append(
+            f"The missing-modality setting remains a meaningful failure case, which gives you an honest limitation to discuss instead of pretending the prototype solves everything."
+        )
+
+    physics_rows = observed[observed["model_variant"] == "physics_aware_fm"]
+    if not physics_rows.empty:
+        climate_rows = physics_rows[physics_rows["split"].astype(str).str.lower() == "climate-stress transfer"]
+        if not climate_rows.empty:
+            note = str(climate_rows.iloc[0]["notes"])
+            if "physics_mae=" in note:
+                physics_mae = note.split("physics_mae=")[-1]
+                findings.append(
+                    f"The physics-aware model also reports an auxiliary scientific-consistency target, which makes the pilot feel closer to a real scientific-ML workflow than a plain classifier benchmark."
+                )
+
+    return findings[:4]
+
+
 def build_repo_assets() -> pd.DataFrame:
     return pd.DataFrame(
         [
             ["Interactive portfolio app", "app.py", "Shows project framing, benchmark logic, export tooling, and application-ready storytelling."],
             ["Benchmark utility", "eval/ood_benchmark.py", "Demonstrates that the repo includes reusable evaluation code rather than slides only."],
             ["CLI experiment runner", "experiments/run_ood_benchmark.py", "Signals reproducibility and command-line workflow readiness."],
-            ["Dummy multimodal prototype", "experiments/train_dummy_multimodal.py", "Shows modeling structure and a path from concept toward implementation."],
-            ["Baseline models", "models/multimodal_baseline.py", "Adds evidence of PyTorch-oriented architectural thinking."],
-            ["Technical report", "docs/technical_report.md", "Provides a supervisor-friendly written explanation of the repo's evidence and limits."],
+            ["Synthetic study trainer", "experiments/train_dummy_multimodal.py", "Runs a domain-inspired synthetic agricultural benchmark with baseline, multimodal, and physics-aware variants."],
+            ["Baseline models", "models/multimodal_baseline.py", "Adds evidence of PyTorch-oriented architectural thinking and physics-aware model design."],
+            ["Technical report", "docs/technical_report.md", "Provides a supervisor-friendly written explanation of the repo's evidence, limits, and benchmark workflow."],
         ],
         columns=["Asset", "Path", "CV proof"],
     )
@@ -573,29 +744,29 @@ def build_repo_assets() -> pd.DataFrame:
 
 def build_recruiter_summary(case_name: str, novelty: str, summary: dict) -> str:
     evidence_line = (
-        f"The current repo includes {summary['runs']} structured experiment rows across {summary['splits']} OOD settings "
-        f"and {summary['variants']} model variants to demonstrate the evaluation workflow."
+        f"The current repo includes a reproducible synthetic pilot with {summary['runs']} structured experiment rows across {summary['splits']} OOD settings "
+        f"and {summary['variants']} model variants to demonstrate the evaluation workflow honestly."
         if summary["runs"]
         else "The repo currently focuses on research framing, benchmark design, and implementation scaffolding rather than final real-data results."
     )
     return (
         "This project adds CV value because it looks like a research portfolio, not only a coursework app. "
         f"It frames {case_name.lower()} through multimodal agricultural foundation models with a {novelty} emphasis, "
-        "connects the idea to named WUR supervisors, and backs the narrative with benchmark scaffolding, prototype code, and reusable application materials. "
+        "connects the idea to named WUR supervisors, including responsible AI, retrieval-oriented multimodal learning, and scientific adaptation, and backs the narrative with benchmark scaffolding, prototype code, and reusable application materials. "
         f"{evidence_line}"
     )
 
 
 def build_cv_bullets(case_name: str, novelty: str, summary: dict) -> list[str]:
     evidence_clause = (
-        f"Created a reusable OOD evaluation scaffold covering {summary['splits']} shift settings, {summary['variants']} model variants, and exportable benchmark reports for future real-data runs."
+        f"Created a reusable OOD evaluation scaffold covering {summary['splits']} shift settings, {summary['variants']} model variants, and exportable benchmark reports, supported by a reproducible synthetic pilot study."
         if summary["runs"]
         else "Created a reusable OOD evaluation scaffold for region, year, sensor, and missing-modality robustness studies in agricultural ML."
     )
     return [
         (
             f"Designed a research-oriented portfolio project on agriculture-specific foundation models for {case_name.lower()}, "
-            f"combining G-E-M multimodal alignment, {novelty}-driven modeling, and WUR-targeted PhD positioning."
+            f"combining G-E-M multimodal alignment, {novelty}-driven modeling, retrieval-aware representation learning, and WUR-targeted PhD positioning."
         ),
         (
             "Built a Streamlit-based research interface that generates CV-ready abstracts, a one-page proposal, a motivation letter, "
@@ -603,8 +774,8 @@ def build_cv_bullets(case_name: str, novelty: str, summary: dict) -> list[str]:
         ),
         evidence_clause,
         (
-            "Structured the repository with benchmark utilities, prototype training scripts, technical documentation, and evidence artifacts "
-            "to present Python, PyTorch, scikit-learn, and scientific communication readiness in one place."
+            "Structured the repository with benchmark utilities, prototype training scripts, visual research framing, technical documentation, and evidence artifacts "
+            "to present Python, PyTorch, scikit-learn, multimodal analysis, and scientific communication readiness in one place."
         ),
     ]
 
@@ -618,7 +789,7 @@ def build_interview_points(case_name: str, summary: dict) -> list[str]:
     ]
     if summary["avg_gain"] is not None:
         points.append(
-            f"In the current sample evidence workflow, the physics-aware variant is about {summary['avg_gain']:.1f} points better than the baseline on average across shared OOD splits."
+            f"In the current reproducible synthetic pilot, the physics-aware variant is about {summary['avg_gain']:.1f} points better than the baseline on average across shared OOD splits."
         )
     return points
 
@@ -700,8 +871,8 @@ def build_pitch(case_name: str, priority: str, novelty: str) -> str:
     }
     priority_map = {
         "Athanasiadis": "responsible agricultural AI, food-system relevance, benchmark realism, and knowledge-guided learning",
-        "Torres": "multimodal representation learning for remote sensing",
-        "Kapoor": "scientific priors and trustworthy adaptation",
+        "Torres": "multimodal representation learning, retrieval, and visual analytics for agricultural remote sensing",
+        "Kapoor": "scientific priors, physics-aware modeling, and trustworthy adaptation",
     }
     return (
         f"My proposed project focuses on {case_name.lower()}, where the core tasks are {case['tasks'].lower()}. "
@@ -742,6 +913,45 @@ def build_athanasiadis_talking_points(case_name: str) -> list[str]:
         "The repo is structured so it can grow toward crop-yield forecasting, plant phenomics, and digital-twin decision support without losing credibility.",
         "That makes the project feel closer to Athanasiadis' style of agricultural AI: benchmarked, domain-aware, collaborative, and practically grounded.",
     ]
+
+
+def build_torres_upgrade(case_name: str) -> str:
+    case = USE_CASES[case_name]
+    return (
+        f"To align the project more directly with Prof. Ricardo da Silva Torres, {case_name.lower()} should be framed not only as a prediction task, "
+        "but also as a multimodal data-science problem involving representation learning, retrieval, visual exploration, and scalable benchmark analysis. "
+        f"That means using modalities such as {case['modalities'].lower()} to learn latent spaces that support both downstream prediction and cross-modal search, explanation, and failure-case analysis."
+    )
+
+
+def build_three_professor_summary(case_name: str) -> str:
+    return (
+        f"The most advanced version of this project treats {case_name.lower()} as a three-layer research agenda: "
+        "Athanasiadis gives the responsible agricultural benchmark and food-system framing, Torres gives the multimodal representation, retrieval, and visual analytics layer, "
+        "and Kapoor gives the scientific-machine-learning layer for physics-aware, trustworthy adaptation. Together, that makes the portfolio much more distinctive than a standard remote-sensing project."
+    )
+
+
+def build_three_professor_cv_line(case_name: str) -> str:
+    return (
+        f"Built a three-supervisor-aligned research portfolio around {case_name.lower()}, combining responsible agricultural AI, multimodal retrieval and representation learning, "
+        "and physics-aware scientific adaptation for robust foundation models."
+    )
+
+
+def build_pain_point_summary(case_name: str) -> str:
+    return (
+        f"The strongest version of this project treats {case_name.lower()} as a response to the exact pain points in the vacancy: "
+        "subtle distribution shift, fragmented multimodal data, weak agriculture-specific latent structure, lack of scientific grounding, and the need for dynamic intelligent systems that matter for food security. "
+        "Each of those pain points is answered through one integrated agenda: benchmark realism from Athanasiadis, retrieval-aware multimodal learning from Torres, and trustworthy scientific adaptation from Kapoor."
+    )
+
+
+def build_advanced_project_line(case_name: str) -> str:
+    return (
+        f"This is not only a project about {case_name.lower()}; it is an advanced agricultural AI platform concept that combines multimodal foundation modeling, cross-modal retrieval, visual benchmark analytics, "
+        "and physics-aware scientific reliability in one coherent PhD narrative."
+    )
 
 
 def build_vacancy_fit(case_name: str) -> str:
@@ -821,8 +1031,8 @@ def build_motivation_letter(case_name: str, priority: str, novelty: str, profile
     case = USE_CASES[case_name]
     priority_map = {
         "Athanasiadis": "responsible agricultural AI, benchmark realism, and knowledge-guided learning",
-        "Torres": "multimodal self-supervised representation learning for remote sensing",
-        "Kapoor": "physics-informed scientific machine learning for robust adaptation",
+        "Torres": "multimodal self-supervised representation learning, retrieval, and visual analytics for remote sensing",
+        "Kapoor": "physics-informed scientific machine learning for robust and trustworthy adaptation",
     }
     novelty_map = {
         "self-supervision": "multimodal self-supervised learning",
@@ -886,7 +1096,11 @@ with st.sidebar:
         [
             "Overview",
             "Research Fit",
+            "Pain Point Engine",
             "Athanasiadis Upgrade",
+            "Torres Upgrade",
+            "Three-Professor Blueprint",
+            "Advanced Agenda",
             "Method Blueprint",
             "Poster Architecture",
             "Experimental Plan",
@@ -924,8 +1138,8 @@ if page == "Overview":
             <div class="muted">
                 A proposal-driven research app for the WUR PhD on foundation models for agricultural sciences.
                 The project combines AgriscienceFM's G-E-M framing, multimodal self-supervised learning for
-                remote sensing, and physics-aware scientific machine learning for robust agricultural prediction
-                under geographic, temporal, and sensor shift.
+                remote sensing, retrieval-aware data science, and physics-aware scientific machine learning for
+                robust agricultural prediction and analysis under geographic, temporal, climatic, and sensor shift.
             </div>
             <div class="muted" style="margin-top:0.8rem;">
                 This app presents a research direction and benchmark plan. It does not present unpublished claims as finished results.
@@ -958,8 +1172,9 @@ if page == "Overview":
             """
             Build a domain-specific agricultural foundation-model pipeline that jointly learns from
             biological, environmental, and management signals. Use multimodal self-supervised learning
-            to learn transferable agricultural representations, then improve reliability with
-            physics-aware adaptation and explicit out-of-distribution evaluation.
+            to learn transferable agricultural representations, support retrieval and visual benchmark
+            exploration, then improve reliability with physics-aware adaptation and explicit
+            out-of-distribution evaluation.
             """
         )
         st.markdown("### Why this pitch is stronger")
@@ -967,7 +1182,8 @@ if page == "Overview":
             """
             - It mirrors the vacancy closely without sounding copied.
             - It combines the three supervisors in one coherent research arc.
-            - It shows a realistic benchmark plan instead of unsupported claims.
+            - It shows a realistic benchmark and failure-analysis plan instead of unsupported claims.
+            - It adds retrieval and visual analytics, which makes the project more original and more aligned with Torres.
             - It gives reusable wording for your CV, portfolio, and motivation letter.
             """
         )
@@ -1003,6 +1219,42 @@ elif page == "Research Fit":
             - OOD benchmarking as a first-class goal.
             """
         )
+
+elif page == "Pain Point Engine":
+    st.header("Pain Point Engine")
+    st.markdown(
+        """
+        This page turns the vacancy's core problems into concrete research responses. It is designed to show
+        that the project is solving the actual scientific and application pain points of the position, not just
+        repeating keywords from the advertisement.
+        """
+    )
+    st.info(build_pain_point_summary(selected_case))
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+        metric("Pain points", "6", "Directly mapped to methods")
+    with c2:
+        metric("Supervisor roles", "3", "Each one solves a real gap")
+    with c3:
+        metric("Benchmark tasks", "6", "More realistic than a single demo")
+    with c4:
+        metric("Portfolio depth", "Advanced", "From prediction to scientific analysis")
+
+    tab1, tab2, tab3 = st.tabs(["Pain Points", "Benchmark Matrix", "Method Roles"])
+    with tab1:
+        st.dataframe(POSITION_PAINPOINT_ENGINE, use_container_width=True, hide_index=True)
+    with tab2:
+        st.dataframe(BENCHMARK_MATRIX, use_container_width=True, hide_index=True)
+        st.markdown(
+            """
+            Best message:
+            the project is valuable because it does not optimize for one benchmark score only. It builds an evaluation culture
+            around the tasks, shifts, and failure modes that matter in agricultural science.
+            """
+        )
+    with tab3:
+        st.dataframe(PROFESSOR_METHOD_MATRIX, use_container_width=True, hide_index=True)
+        st.dataframe(ADVANCED_RESEARCH_QUESTIONS, use_container_width=True, hide_index=True)
 
 elif page == "Athanasiadis Upgrade":
     st.header("Athanasiadis Upgrade")
@@ -1058,6 +1310,120 @@ elif page == "Athanasiadis Upgrade":
         for point in build_athanasiadis_talking_points(selected_case):
             st.markdown(f"- {point}")
 
+elif page == "Torres Upgrade":
+    st.header("Torres Upgrade")
+    st.markdown(
+        """
+        This page sharpens the project toward Prof. Ricardo da Silva Torres' research style:
+        data science, visual computing, multimedia analysis and retrieval, information visualisation,
+        and scalable multimodal research workflows.
+        """
+    )
+    st.info(build_torres_upgrade(selected_case))
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+        metric("Torres fit", "Stronger", "More data-centric and visual")
+    with c2:
+        metric("Torres themes", "6", "Retrieval to eScience")
+    with c3:
+        metric("New angle", "Retrieval", "Not only classification")
+    with c4:
+        metric("Project edge", "Unique", "Visual analytics + benchmarks")
+
+    tab1, tab2, tab3 = st.tabs(["Research Signals", "Project Upgrade", "CV Value"])
+    with tab1:
+        st.dataframe(TORRES_SIGNALS, use_container_width=True, hide_index=True)
+    with tab2:
+        st.markdown(
+            """
+            What changes in the project when Torres is taken seriously as a supervisor:
+            - the model should learn representations that support retrieval as well as prediction
+            - the repo should support exploratory visual analytics, not just final scores
+            - multimodal learning should include text, metadata, and location as first-class views
+            - the benchmark should help users inspect failure cases and cross-modal similarities
+            """
+        )
+        st.dataframe(UNIQUE_ADVANTAGES, use_container_width=True, hide_index=True)
+    with tab3:
+        st.code(build_three_professor_cv_line(selected_case), language="text")
+        st.markdown(
+            """
+            Strong interview line:
+            I want this project to show not only that I can train multimodal models, but also that I can
+            structure agricultural data for retrieval, exploration, and scientific analysis in a reusable way.
+            """
+        )
+
+elif page == "Three-Professor Blueprint":
+    st.header("Three-Professor Blueprint")
+    st.markdown(
+        """
+        This is the project's most distinctive layer: one coherent research agenda that combines
+        responsible agricultural AI, multimodal retrieval-oriented representation learning, and
+        physics-aware scientific adaptation while staying tightly matched to the WUR PhD vacancy.
+        """
+    )
+    st.info(build_three_professor_summary(selected_case))
+    tab1, tab2, tab3, tab4 = st.tabs(["Synergy Map", "Kapoor Layer", "Distinctive Value", "CV Line"])
+    with tab1:
+        st.dataframe(SUPERVISOR_SYNERGY, use_container_width=True, hide_index=True)
+        st.markdown(
+            """
+            Best synthesis:
+            Athanasiadis gives the real agricultural benchmark problem, Torres gives the multimodal data-and-retrieval engine,
+            and Kapoor gives the scientific reliability layer. That combination makes the project feel unusually complete.
+            """
+        )
+    with tab2:
+        st.dataframe(KAPOOR_SIGNALS, use_container_width=True, hide_index=True)
+        st.dataframe(RESPONSIBLE_AI, use_container_width=True, hide_index=True)
+    with tab3:
+        st.dataframe(UNIQUE_ADVANTAGES, use_container_width=True, hide_index=True)
+        st.markdown(
+            """
+            This is the uniqueness you can say on your CV:
+            the project is not just about agricultural prediction, but about building a science-facing foundation-model
+            portfolio that supports benchmark design, retrieval, visual exploration, and trustworthy adaptation.
+            """
+        )
+    with tab4:
+        tri_line = build_three_professor_cv_line(selected_case)
+        st.text_area("Three-professor CV line", value=tri_line, height=110)
+        st.text_area(
+            "Three-professor oral pitch",
+            value=(
+                "I designed this project so that each supervisor's expertise has a real technical role: "
+                "Athanasiadis for benchmarked agricultural impact, Torres for multimodal retrieval and visual analytics, "
+                "and Kapoor for physics-aware scientific reliability."
+            ),
+            height=130,
+        )
+
+elif page == "Advanced Agenda":
+    st.header("Advanced Agenda")
+    st.markdown(
+        """
+        This page presents the upgraded project as a more advanced research platform. It shows how the project moves
+        beyond a normal PhD application demo into a reusable scientific workflow for multimodal agricultural AI.
+        """
+    )
+    st.info(build_advanced_project_line(selected_case))
+    tab1, tab2, tab3 = st.tabs(["Research Modules", "Advanced Questions", "Distinctive Value"])
+    with tab1:
+        st.dataframe(ADVANCED_RESEARCH_MODULES, use_container_width=True, hide_index=True)
+        st.markdown(
+            """
+            Strongest technical framing:
+            the project combines representation learning, retrieval, scientific regularization, benchmark design,
+            and visual analytics in one modular architecture.
+            """
+        )
+    with tab2:
+        st.dataframe(ADVANCED_RESEARCH_QUESTIONS, use_container_width=True, hide_index=True)
+    with tab3:
+        st.dataframe(UNIQUE_ADVANTAGES, use_container_width=True, hide_index=True)
+        st.code(build_three_professor_cv_line(selected_case), language="text")
+
 elif page == "Method Blueprint":
     st.header("Method Blueprint")
     st.plotly_chart(sankey_fig(), use_container_width=True)
@@ -1069,7 +1435,17 @@ elif page == "Method Blueprint":
             - Cross-modal contrastive learning between satellite imagery and weather context
             - Masked modeling for imagery patches and temporal segments
             - Retrieval-style alignment between image, field, and metadata views
+            - Text-image-location alignment for agricultural reports, field notes, and geospatial context
             - Region-aware negatives or semantically aware positives for remote sensing
+            """
+        )
+        st.markdown("### Advanced outputs")
+        st.markdown(
+            """
+            - Predictive heads for crop tasks such as yield, disease, and crop failure
+            - Retrieval heads for similar-case search across image, metadata, and text
+            - Visual analytics views for failure clusters, shift diagnosis, and benchmark inspection
+            - Scientific consistency heads for plausibility under climatic and agronomic variation
             """
         )
         st.markdown("### Physics-aware layer")
@@ -1086,15 +1462,19 @@ elif page == "Method Blueprint":
             """image_tokens = image_encoder(sentinel_patch)
 weather_tokens = temporal_encoder(weather_cube)
 management_tokens = metadata_encoder(field_geom, text_meta)
+text_tokens = text_encoder(field_report)
 
-joint_repr = cross_modal_fuser(image_tokens, weather_tokens, management_tokens)
+joint_repr = cross_modal_fuser(image_tokens, weather_tokens, management_tokens, text_tokens)
 ssl_loss = contrastive_loss(joint_repr) + masked_modeling_loss(joint_repr)
+retrieval_loss = cross_modal_retrieval_loss(joint_repr, field_id)
 physics_loss = crop_dynamics_regularizer(joint_repr, gdd, radiation, season_index)
+analytics_head = benchmark_visual_analytics(joint_repr, split_id, task_id)
 
-loss = ssl_loss + 0.2 * physics_loss
+loss = ssl_loss + 0.2 * physics_loss + 0.15 * retrieval_loss
 """,
             language="python",
         )
+        st.dataframe(ADVANCED_RESEARCH_MODULES, use_container_width=True, hide_index=True)
     use_case = USE_CASES[selected_case]
     a, b, c = st.columns(3)
     with a:
@@ -1119,12 +1499,19 @@ elif page == "Experimental Plan":
     st.header("Experimental Plan")
     experiment_logs, log_source = load_experiment_logs(uploaded_log_file)
     has_evidence = not experiment_logs.dropna(subset=["score"]).empty
+    pilot_findings = build_pilot_findings(experiment_logs)
     tab1, tab2, tab3, tab4 = st.tabs(["OOD Benchmarks", "Ablations", "ML Stack", "Hypotheses"])
     with tab1:
         if log_source and has_evidence:
             st.success(f"Loaded experiment evidence from {log_source}.")
+            if "Domain-inspired synthetic agricultural benchmark" in experiment_logs["use_case"].astype(str).values:
+                st.caption("This evidence comes from a reproducible synthetic pilot with domain-inspired crop, weather, management, and shift structure.")
             st.plotly_chart(evidence_fig(experiment_logs), use_container_width=True)
             st.dataframe(experiment_logs, use_container_width=True, hide_index=True)
+            if pilot_findings:
+                st.markdown("### What the pilot currently shows")
+                for finding in pilot_findings:
+                    st.markdown(f"- {finding}")
         else:
             st.info("No experiment log detected yet. The app falls back to the planned benchmark structure below. Add `data/experiment_runs.csv` or upload a CSV from the sidebar.")
             st.dataframe(OOD, use_container_width=True, hide_index=True)
@@ -1159,11 +1546,12 @@ elif page == "Vacancy Match":
     tab1, tab2, tab3, tab4 = st.tabs(["Position Scope", "Duties", "Application Pack", "Timeline"])
     with tab1:
         st.dataframe(VACANCY_SCOPE, use_container_width=True, hide_index=True)
+        st.dataframe(POSITION_PAINPOINT_ENGINE, use_container_width=True, hide_index=True)
         st.markdown(
             """
             Best framing:
             this project is about agriculture-specific foundation models that learn from multimodal heterogeneous data,
-            especially image and time-series signals, and are evaluated on tasks that matter for food security and agricultural decisions.
+            especially image and time-series signals, are extended with retrieval and analysis capabilities, and are evaluated on tasks that matter for food security and agricultural decisions.
             """
         )
     with tab2:
@@ -1257,7 +1645,7 @@ elif page == "CV Value Pack":
         metric("Repo assets", "6", "Code + docs + exports")
     with c4:
         best_score = f"{evidence_summary['best_score']:.1f}" if evidence_summary["best_score"] is not None else "Planned"
-        metric("Best score", best_score, "Sample evidence, not claimed publication result")
+        metric("Best score", best_score, "Synthetic pilot, not claimed publication result")
 
     tab1, tab2, tab3, tab4 = st.tabs(["Recruiter Summary", "CV Bullets", "Repo Proof", "Interview Proof"])
     with tab1:
@@ -1304,10 +1692,15 @@ elif page == "CV Value Pack":
         st.markdown("### Talking points for supervisors or interviewers")
         for point in interview_points:
             st.markdown(f"- {point}")
+        pilot_findings = build_pilot_findings(experiment_logs)
+        if pilot_findings:
+            st.markdown("### Evidence-aware talking points")
+            for finding in pilot_findings:
+                st.markdown(f"- {finding}")
         st.markdown("### Honest framing to keep")
         st.markdown(
             """
-            - Treat current benchmark numbers as scaffolded workflow evidence unless replaced by your own real experiments.
+            - Treat current benchmark numbers as reproducible synthetic pilot evidence unless replaced by your own real experiments.
             - Emphasize the repo's strengths in problem framing, evaluation design, and implementation structure.
             - Present the project as a serious research portfolio that is ready for deeper empirical work.
             """
@@ -1325,18 +1718,20 @@ elif page == "Supervisor Alignment":
             """
             ### Combined supervision story
             - **Athanasiadis layer:** responsible agricultural AI, food security, benchmark realism, and knowledge-guided learning.
-            - **Torres layer:** self-supervised representation learning for multimodal remote sensing.
-            - **Kapoor layer:** scientific priors and physics-aware reliability.
+            - **Torres layer:** multimodal representation learning, retrieval, visual analytics, and scalable data-centric eScience.
+            - **Kapoor layer:** scientific priors, physics-aware reliability, and trustworthy adaptation.
 
             This gives you a clear answer if they ask why this project needs this exact supervisory team.
             """
         )
+        st.dataframe(SUPERVISOR_SYNERGY, use_container_width=True, hide_index=True)
         st.markdown("### Best short oral pitch")
         st.markdown(
             """
             I want to investigate agriculture-specific foundation models that align biological,
-            environmental, and management signals through multimodal self-supervision, then make
-            them more robust under real-world shift using scientifically grounded priors.
+            environmental, and management signals through multimodal self-supervision, make them explorable
+            through retrieval and visual analytics, and then improve their robustness under real-world shift
+            using scientifically grounded priors.
             """
         )
     with right:
@@ -1416,26 +1811,30 @@ elif page == "Application Pitch":
             knowledge-guided learning, and responsible evaluation under climate and geographic shift.
             """
         )
+        st.markdown("### Three-professor line")
+        st.markdown(build_three_professor_cv_line(selected_case))
     with tabs[1]:
         st.markdown(
             """
             My research interests lie at the intersection of multimodal representation learning,
-            scientific machine learning, and robust agricultural AI. To explore this direction,
+            retrieval-oriented data science, scientific machine learning, and robust agricultural AI. To explore this direction,
             I developed a project concept around agriculture-specific foundation models that
             jointly learn from biological, environmental, and management signals using
             self-supervised objectives. Inspired by the AgriscienceFM vision, I am particularly
             interested in how such models can be evaluated under geographic and temporal shift,
+            how multimodal retrieval and visual analytics can improve scientific exploration,
             and how physics-aware priors can improve trustworthiness for applications such as
-            crop monitoring, yield-related prediction, and crop-failure detection.
+            crop monitoring, yield-related prediction, crop-failure detection, and agricultural benchmark analysis.
             """
         )
     with tabs[2]:
         st.markdown(
             """
             I see this PhD as a rare opportunity because it combines three things I want to work on together:
-            domain-specific foundation models, multimodal agricultural data, and scientific constraints for robustness.
+            domain-specific foundation models, multimodal agricultural data science, and scientific constraints for robustness.
             What excites me most is not only building better models, but understanding how to make them transfer across
-            regions, seasons, and sensing conditions in a way that remains meaningful for agricultural science.
+            regions, seasons, and sensing conditions in a way that remains meaningful for agricultural science,
+            while also making the resulting representations explorable through retrieval and visual analysis.
             """
         )
     st.warning("Keep charts framed as targets, benchmarks, or planned experiments unless you have actually run and documented them.")

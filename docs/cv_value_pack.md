@@ -14,7 +14,7 @@ This note explains how to present the repository as a high-value portfolio proje
 - `Research portfolio`: the project links a concrete problem, a methodological plan, hypotheses, risks, and evaluation settings
 - `Technical execution`: the repository includes an OOD benchmark utility, prototype training flow, and structured experiment logs
 - `Scientific writing`: the app generates a one-page proposal, motivation letter, and reusable project pitch
-- `Honest evidence framing`: the repo distinguishes sample workflow evidence from not-yet-real agricultural results
+- `Honest evidence framing`: the repo distinguishes reproducible synthetic pilot evidence from not-yet-real agricultural results
 
 ## Copy-Ready CV Bullet Ideas
 
@@ -34,4 +34,4 @@ This note explains how to present the repository as a high-value portfolio proje
 
 ## Honest Positioning
 
-Use the repository as evidence of research readiness, implementation structure, and communication quality. Keep benchmark numbers framed as workflow or sample evidence unless they come from your own real runs on agricultural data.
+Use the repository as evidence of research readiness, implementation structure, and communication quality. Keep benchmark numbers framed as a reproducible synthetic pilot unless they come from your own real runs on agricultural data.

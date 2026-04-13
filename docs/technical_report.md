@@ -37,7 +37,7 @@ The repository now includes a structured experiment log at:
 
 - `data/experiment_runs.csv`
 
-The current sample log records:
+The current domain-inspired synthetic log records:
 
 - use case,
 - OOD split,
@@ -47,7 +47,7 @@ The current sample log records:
 - calibration error,
 - and notes.
 
-This structure is designed so real experiments can be dropped in later without changing the reporting pipeline.
+This structure is designed so reproducible synthetic pilot results can be shown now, while real experiments can be dropped in later without changing the reporting pipeline.
 
 ### 2. OOD Benchmark Pipeline
 
@@ -107,19 +107,19 @@ It also begins to connect the project more credibly to:
 
 The project still remains partly proposal-driven. The main limitations are:
 
-- the included experiment log is currently a sample scaffold,
-- there is not yet a trained multimodal model implementation in the repository,
-- and the benchmark evidence is not yet backed by a full training pipeline.
+- the included experiment log is currently based on domain-inspired synthetic data rather than real agricultural datasets,
+- the evidence is useful as a pilot benchmark workflow but not as a substitute for real remote-sensing experiments,
+- and the strongest next step is still to attach real-data runs once a suitable dataset is selected.
 
 These limitations are acceptable for a developing portfolio project, but they should be addressed before treating the repository as proof of completed research.
 
 ## Best Next Technical Steps
 
-1. Replace the sample experiment log with actual runs from a baseline and one improved model.
+1. Replace the synthetic pilot log with actual runs from a baseline and one improved model on real agricultural data.
 2. Add a real OOD split generator for field-level train/test partitioning by geography or year.
-3. Implement a minimal multimodal baseline with image and weather branches.
-4. Add a short reproducibility note describing data assumptions and metrics.
+3. Extend the pilot to include retrieval or visual-analytics outputs over real experiments.
+4. Add a short reproducibility note describing real data assumptions, preprocessing, and metrics.
 
 ## Summary
 
-The repository now goes beyond a polished concept app. It contains a minimal but concrete evaluation scaffold, evidence schema, and research reporting structure aligned with the WUR PhD vacancy. The next milestone is to replace the sample evidence with real experiments and attach at least one implemented baseline model.
+The repository now goes beyond a polished concept app. It contains a concrete evaluation scaffold, a reproducible synthetic pilot benchmark, an evidence schema, and research reporting structure aligned with the WUR PhD vacancy. The next milestone is to replace the synthetic pilot evidence with real experiments and attach at least one implemented baseline model on actual agricultural data.

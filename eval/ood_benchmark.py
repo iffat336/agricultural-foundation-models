@@ -46,7 +46,10 @@ def summarize_by_split(df: pd.DataFrame) -> pd.DataFrame:
 
 def best_variant_by_split(summary_df: pd.DataFrame) -> pd.DataFrame:
     best_rows = (
-        summary_df.sort_values(["use_case", "split", "score_mean"], ascending=[True, True, False])
+        summary_df.sort_values(
+            ["use_case", "split", "score_mean", "ece_mean", "f1_mean"],
+            ascending=[True, True, False, True, False],
+        )
         .groupby(["use_case", "split"], as_index=False)
         .first()
     )

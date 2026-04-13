@@ -30,7 +30,11 @@ This app turns those ideas into one coherent project narrative:
 
 - `Overview`: vacancy pain points, project thesis, and honest benchmark targets
 - `Research Fit`: professor-aware framing and the AgriscienceFM `G-E-M` lens
+- `Pain Point Engine`: maps the exact problems in the vacancy to technical research responses
 - `Athanasiadis Upgrade`: responsible AI, benchmark realism, knowledge-guided ML, and crop-model-aware project framing
+- `Torres Upgrade`: multimedia retrieval, visual analytics, data science, and eScience-oriented project framing
+- `Three-Professor Blueprint`: one unified agenda connecting Athanasiadis, Torres, Kapoor, and the vacancy
+- `Advanced Agenda`: modular research architecture, advanced questions, and project distinctiveness
 - `Method Blueprint`: multimodal pipeline, SSL objectives, and physics-aware layer
 - `Poster Architecture`: a visual interview-ready summary of the full research pipeline
 - `Experimental Plan`: OOD splits, ablations, and the technical stack
@@ -77,7 +81,10 @@ pip install -r requirements-ml.txt
 
 - it now reflects the supervisors' current research directions more explicitly
 - it now aligns more directly with Athanasiadis through responsible AI, benchmark realism, knowledge-guided ML, and crop-yield-oriented framing
+- it now aligns more directly with Torres through multimedia retrieval, visual analytics, and data-centric multimodal research workflows
+- it now combines all three supervisors into one more advanced and distinctive research agenda
 - it uses the AgriscienceFM `G-E-M` concept instead of a generic multimodal story
+- it now maps the vacancy pain points directly to technical modules, benchmark design, and supervisor-specific methods
 - it presents publishable research questions, OOD evaluation logic, and ablation design
 - it now maps the project directly to the vacancy duties, requested qualities, and required application documents
 - it now includes dataset planning, hypotheses, risks, and a reusable proposal builder
@@ -92,7 +99,7 @@ pip install -r requirements-ml.txt
 - it shows research ownership: problem framing, hypotheses, risks, and evaluation design
 - it shows technical execution: benchmark utilities, prototype training flow, and experiment schema
 - it shows scientific communication: proposal, motivation-letter, CV, and interview-ready exports
-- it shows honest judgment: sample evidence is labeled as scaffolded workflow, not inflated as finished results
+- it shows honest judgment: reproducible synthetic pilot evidence is labeled honestly, not inflated as finished results
 
 ## Athanasiadis-Specific Upgrade
 
@@ -100,6 +107,19 @@ pip install -r requirements-ml.txt
 - it frames benchmark design as a central contribution, especially for crop-yield and climate-stress-relevant tasks
 - it positions physics-aware learning as a bridge between process-based crop modeling and modern ML
 - it adds a roadmap toward plant phenomics, crop-yield benchmarking, and digital-twin or management extensions
+
+## Three-Professor Upgrade
+
+- Athanasiadis gives the benchmarked agricultural-impact and food-systems framing
+- Torres adds multimedia retrieval, information visualisation, and data-centric multimodal analysis
+- Kapoor adds physics-informed scientific machine learning and trustworthy adaptation
+- together they turn the repo into a more original research platform rather than a standard remote-sensing project
+
+## Advanced Pain-Point Upgrade
+
+- the project now answers the position's core pain points explicitly: subtle shift, multimodal heterogeneity, weak agricultural latent structure, fragmented benchmarks, and lack of scientific grounding
+- it adds a stronger technical identity through retrieval heads, visual analytics, scientific consistency checks, and benchmark realism
+- it reads more like a science-facing agricultural foundation-model platform than a single-task app
 
 ## Vacancy-Specific Upgrade
 
@@ -119,7 +139,7 @@ pip install -r requirements-ml.txt
 - OOD benchmark utility: `eval/ood_benchmark.py`
 - CLI runner: `experiments/run_ood_benchmark.py`
 - Synthetic multimodal dataset: `data/synthetic_multimodal.py`
-- Dummy multimodal training script: `experiments/train_dummy_multimodal.py`
+- Domain-inspired synthetic study trainer: `experiments/train_dummy_multimodal.py`
 - Minimal PyTorch models: `models/multimodal_baseline.py`
 - Technical report: `docs/technical_report.md`
 - CV value note: `docs/cv_value_pack.md`
@@ -131,9 +151,9 @@ pip install -r requirements-ml.txt
 
 ## Project Status
 
-- `Implemented`: Streamlit research portfolio, OOD benchmark summarizer, synthetic experiment schema, dummy multimodal prototype
-- `Prototype`: image-only and multimodal PyTorch baselines on synthetic data with scikit-learn metrics
-- `Sample evidence`: CSV logs and benchmark outputs generated from dummy data for workflow demonstration
+- `Implemented`: Streamlit research portfolio, OOD benchmark summarizer, synthetic experiment schema, and a domain-inspired synthetic study pipeline
+- `Prototype`: image-only, multimodal, and physics-aware PyTorch baselines on synthetic data with benchmark-compatible metrics
+- `Synthetic pilot evidence`: CSV logs and benchmark outputs generated from reproducible domain-inspired synthetic data
 - `Not yet real evidence`: agricultural dataset training runs, real remote-sensing experiments, and thesis-backed results
 
 ### Run The OOD Benchmark Summarizer
@@ -142,19 +162,19 @@ pip install -r requirements-ml.txt
 python experiments/run_ood_benchmark.py --input data/experiment_runs.csv --output-dir outputs
 ```
 
-### Run The Dummy Multimodal Prototype
+### Run The Domain-Inspired Synthetic Study
 
 ```bash
-python experiments/train_dummy_multimodal.py --epochs 8 --output-dir outputs/dummy_training
+python experiments/train_dummy_multimodal.py --epochs 4 --output-dir outputs/synthetic_study
 ```
 
 This creates:
 
-- `outputs/dummy_training/dummy_training_history.csv`
-- `outputs/dummy_training/dummy_training_runs.csv`
-- `outputs/dummy_training/dummy_training_summary.md`
+- `outputs/synthetic_study/synthetic_study_history.csv`
+- `outputs/synthetic_study/synthetic_study_runs.csv`
+- `outputs/synthetic_study/synthetic_study_summary.md`
 
-The generated `dummy_training_runs.csv` follows the same schema as the app and benchmark pipeline, so you can upload it directly in the sidebar.
+The generated `synthetic_study_runs.csv` follows the same schema as the app and benchmark pipeline, and the trainer can also write directly to `data/experiment_runs.csv` for the app to load by default.
 
 ## Streamlit Cloud Note
 
@@ -177,14 +197,15 @@ Use these columns in your CSV:
 
 ## Important Note
 
-The charts in the app are presented as **illustrative targets and experiment plans** unless you have actually run the experiments and can support the numbers. That framing is more credible for a PhD application than hard-coded result claims.
+The charts and benchmark outputs in the app should be framed as **reproducible synthetic pilot evidence** unless you have actually run the experiments on real agricultural data. That framing is far more credible than pretending synthetic or scaffolded evidence is a finished scientific result.
 
 ## Next Improvements
 
-- replace the sample experiment log with your own real training outputs
+- replace the synthetic pilot experiment log with your own real training outputs
 - add richer dataset cards with source links, licenses, and preprocessing notes
 - connect proposal exports to PDF or Markdown templates
 - refine the motivation letter with your exact MSc thesis, publications, and personal background
+- replace the synthetic pilot evidence with real runs that support prediction, retrieval, and robustness analysis together
 
 ## License
 

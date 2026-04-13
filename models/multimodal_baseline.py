@@ -54,6 +54,20 @@ class GeoEncoder(nn.Module):
         return self.net(geo)
 
 
+class VectorEncoder(nn.Module):
+    def __init__(self, in_features: int, hidden_dim: int) -> None:
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(in_features, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.ReLU(),
+        )
+
+    def forward(self, tensor: torch.Tensor) -> torch.Tensor:
+        return self.net(tensor)
+
+
 class ImageOnlyClassifier(nn.Module):
     def __init__(self, in_channels: int = 6, num_classes: int = 3) -> None:
         super().__init__()
@@ -69,29 +83,117 @@ class ImageOnlyClassifier(nn.Module):
         return self.head(image_repr)
 
 
-class MultimodalFusionClassifier(nn.Module):
+class MultimodalFusionBackbone(nn.Module):
     def __init__(
         self,
         in_channels: int = 6,
-        weather_steps: int = 12,
-        weather_features: int = 5,
-        geo_features: int = 4,
-        num_classes: int = 3,
+        weather_steps: int = 16,
+        weather_features: int = 6,
+        geo_features: int = 5,
+        management_features: int = 4,
+        text_features: int = 8,
     ) -> None:
         super().__init__()
         self.image_encoder = ImageEncoder(in_channels=in_channels, hidden_dim=64)
         self.weather_encoder = WeatherEncoder(weather_steps=weather_steps, weather_features=weather_features, hidden_dim=32)
-        self.geo_encoder = GeoEncoder(geo_features=geo_features, hidden_dim=16)
+        self.geo_encoder = GeoEncoder(geo_features=geo_features, hidden_dim=20)
+        self.management_encoder = VectorEncoder(in_features=management_features, hidden_dim=16)
+        self.text_encoder = VectorEncoder(in_features=text_features, hidden_dim=24)
         self.fusion = nn.Sequential(
-            nn.Linear(64 + 32 + 16, 96),
+            nn.Linear(64 + 32 + 20 + 16 + 24, 128),
             nn.ReLU(),
-            nn.Dropout(p=0.1),
-            nn.Linear(96, num_classes),
+            nn.Dropout(p=0.15),
+            nn.Linear(128, 96),
+            nn.ReLU(),
         )
 
-    def forward(self, image: torch.Tensor, weather: torch.Tensor, geo: torch.Tensor) -> torch.Tensor:
+    def forward(
+        self,
+        image: torch.Tensor,
+        weather: torch.Tensor,
+        geo: torch.Tensor,
+        management: torch.Tensor,
+        text: torch.Tensor,
+    ) -> torch.Tensor:
         image_repr = self.image_encoder(image)
         weather_repr = self.weather_encoder(weather)
         geo_repr = self.geo_encoder(geo)
-        joint = torch.cat([image_repr, weather_repr, geo_repr], dim=1)
+        management_repr = self.management_encoder(management)
+        text_repr = self.text_encoder(text)
+        joint = torch.cat([image_repr, weather_repr, geo_repr, management_repr, text_repr], dim=1)
         return self.fusion(joint)
+
+
+class MultimodalFusionClassifier(nn.Module):
+    def __init__(
+        self,
+        in_channels: int = 6,
+        weather_steps: int = 16,
+        weather_features: int = 6,
+        geo_features: int = 5,
+        management_features: int = 4,
+        text_features: int = 8,
+        num_classes: int = 3,
+    ) -> None:
+        super().__init__()
+        self.backbone = MultimodalFusionBackbone(
+            in_channels=in_channels,
+            weather_steps=weather_steps,
+            weather_features=weather_features,
+            geo_features=geo_features,
+            management_features=management_features,
+            text_features=text_features,
+        )
+        self.classifier = nn.Linear(96, num_classes)
+
+    def forward(
+        self,
+        image: torch.Tensor,
+        weather: torch.Tensor,
+        geo: torch.Tensor,
+        management: torch.Tensor,
+        text: torch.Tensor,
+    ) -> torch.Tensor:
+        joint = self.backbone(image, weather, geo, management, text)
+        return self.classifier(joint)
+
+
+class PhysicsAwareMultimodalClassifier(nn.Module):
+    def __init__(
+        self,
+        in_channels: int = 6,
+        weather_steps: int = 16,
+        weather_features: int = 6,
+        geo_features: int = 5,
+        management_features: int = 4,
+        text_features: int = 8,
+        num_classes: int = 3,
+    ) -> None:
+        super().__init__()
+        self.backbone = MultimodalFusionBackbone(
+            in_channels=in_channels,
+            weather_steps=weather_steps,
+            weather_features=weather_features,
+            geo_features=geo_features,
+            management_features=management_features,
+            text_features=text_features,
+        )
+        self.classifier = nn.Linear(96, num_classes)
+        self.physics_head = nn.Sequential(
+            nn.Linear(96, 48),
+            nn.ReLU(),
+            nn.Linear(48, 1),
+        )
+
+    def forward(
+        self,
+        image: torch.Tensor,
+        weather: torch.Tensor,
+        geo: torch.Tensor,
+        management: torch.Tensor,
+        text: torch.Tensor,
+    ) -> tuple[torch.Tensor, torch.Tensor]:
+        joint = self.backbone(image, weather, geo, management, text)
+        logits = self.classifier(joint)
+        physics_prediction = self.physics_head(joint)
+        return logits, physics_prediction

@@ -1,5 +1,6 @@
 use_case,split,model_variant,score_mean,f1_mean,ece_mean,run_count
-Monitoring crops and water from space,Region transfer,physics_aware_fm,71.1,0.69,0.1,1
-Monitoring crops and water from space,Year transfer,physics_aware_fm,68.3,0.66,0.11,1
-Phenotyping and breeding resilient crops,Missing modality,physics_aware_fm,60.4,0.58,0.13,1
-Precision farming for pest and disease,Sensor transfer,physics_aware_fm,64.7,0.62,0.12,1
+Domain-inspired synthetic agricultural benchmark,Climate-stress transfer,multimodal_ssl,1.0,1.0,0.005,1
+Domain-inspired synthetic agricultural benchmark,Missing modality,baseline,0.7094,0.7156,0.2236,1
+Domain-inspired synthetic agricultural benchmark,Region transfer,multimodal_ssl,1.0,1.0,0.0039,1
+Domain-inspired synthetic agricultural benchmark,Sensor transfer,multimodal_ssl,1.0,1.0,0.0034,1
+Domain-inspired synthetic agricultural benchmark,Year transfer,physics_aware_fm,1.0,1.0,0.0063,1
